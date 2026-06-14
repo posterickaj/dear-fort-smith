@@ -1,0 +1,67 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "blog"
+    label: "Articles"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+
+      - label: "Publish Date"
+        name: "pubDate"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+
+      - label: "Hero Image"
+        name: "heroImage"
+        widget: "image"
+        required: false
+
+      - label: "Tags"
+        name: "tags"
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - { label: "Balanced Budget", value: "balanced-budget" }
+          - { label: "Do the Math", value: "do-the-math" }
+          - { label: "Finance Decoder", value: "finance-decoder" }
+          - { label: "Fix It First", value: "fix-it-first" }
+          - { label: "Utilities", value: "utilites" }
+          - { label: "Money Ball", value: "money-ball" }
+          - { label: "Eyes on the Street", value: "eyes-on-the-street" }
+          - { label: "Police Visibility", value: "police-visibility" }
+          - { label: "Single Stair", value: "single-stair" }
+          - { label: "Safe Streets", value: "safe-streets" }
+          - { label: "No New Roads", value: "no-new-roads" }
+          - { label: "VMT", value: "vmt" }
+          - { label: "Mobility for All", value: "car-dependency" }
+          - { label: "Hexagonal Network Topology", value: "street-hierarchy" }
+          - { label: "Incremental Development", value: "incremental-development" }
+          - { label: "Infill", value: "infill" }
+          - { label: "Small Business Reform", value: "small-business-reform" }
+          - { label: "Single Tax", value: "single-tax" }
+          - { label: "Parking Reform", value: "parking-reform" }
+          - { label: "Transit-Oriented Development", value: "transit-orientation" }
+          - { label: "Tactical Urbanism", value: "tactical-urbanism" }
+          - { label: "Capture Economic Rent", value: "public-land" }
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"

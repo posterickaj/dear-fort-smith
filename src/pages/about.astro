@@ -1,0 +1,54 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+const title = 'About | Dear Fort Smith';
+const description = 'About Dear Fort Smith.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<section class="about">
+				<h1>About Dear Fort Smith</h1>
+
+				<p>
+					Dear Fort Smith is a civic archive for maps, articles, memes, field notes,
+					public comments, and policy work focused on making Fort Smith safer, more
+					financially solvent, and more productive.
+				</p>
+
+				<p>
+					The project connects local observations to a practical platform: growth should
+					pay for itself, infrastructure should be maintained before expansion, streets
+					should be safe before they are fast, and land should be used productively.
+				</p>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 760px;
+		margin: 0 auto;
+		padding: 3rem 1rem;
+	}
+
+	h1 {
+		margin-bottom: 1rem;
+	}
+
+	p {
+		line-height: 1.7;
+		font-size: 1.1rem;
+	}
+</style>

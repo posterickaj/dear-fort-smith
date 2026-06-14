@@ -1,0 +1,196 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+const posts = (await getCollection('blog'))
+	.filter((post) => post.data.heroImage)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const title = 'Memes | Dear Fort Smith,';
+const description = 'A visual wall of Dear Fort Smith, articles, maps, memes, and urbanist arguments.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+
+		<main>
+			<section class="page-header">
+				<p class="eyebrow">Dear Fort Smith,</p>
+				<h1>Memes</h1>
+				<p>
+					A visual way to explore the site. Click an image to open the article behind it.
+				</p>
+
+				<button id="shuffleButton" type="button">Shuffle the wall</button>
+			</section>
+
+			<section class="meme-wall" aria-label="Visual article wall">
+				{posts.map((post) => (
+					<a class="meme-card" href={`/blog/${post.id}/`}>
+						<img src={post.data.heroImage} alt={post.data.title} />
+						<div class="meme-title">
+							<span>{post.data.title}</span>
+						</div>
+					</a>
+				))}
+			</section>
+		</main>
+
+		<Footer />
+
+<script>
+	function shuffleWall() {
+		const wall = document.querySelector('.meme-wall');
+		const cards = Array.from(document.querySelectorAll('.meme-card'));
+
+		for (let i = cards.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[cards[i], cards[j]] = [cards[j], cards[i]];
+		}
+
+		cards.forEach((card) => wall?.appendChild(card));
+	}
+
+	shuffleWall();
+
+	document.getElementById('shuffleButton')?.addEventListener('click', shuffleWall);
+</script>
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 3rem 1rem;
+	}
+
+	.page-header {
+		max-width: 760px;
+		margin-bottom: 2rem;
+	}
+
+	.eyebrow {
+		margin: 0 0 0.5rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgb(var(--gray));
+	}
+
+	h1 {
+		margin: 0 0 1rem;
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		line-height: 1;
+	}
+
+	.page-header p {
+		line-height: 1.6;
+		font-size: 1.1rem;
+	}
+
+	button {
+		margin-top: 1rem;
+		padding: 0.55rem 0.9rem;
+		border: 0;
+		border-radius: 999px;
+		background: rgba(var(--accent), 0.14);
+		color: var(--accent);
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background: rgba(var(--accent), 0.24);
+	}
+
+.meme-wall {
+	columns: 280px;
+	column-gap: 1rem;
+}
+
+.meme-card {
+	position: relative;
+	display: block;
+	width: 100%;
+	margin: 0 0 1rem;
+	break-inside: avoid;
+	overflow: hidden;
+	border-radius: 14px;
+	background: black;
+	box-shadow: 0 2px 10px rgba(var(--black), 0.08);
+	text-decoration: none;
+	transition:
+		transform 160ms ease,
+		box-shadow 160ms ease,
+		opacity 160ms ease;
+}
+
+.meme-card:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--box-shadow);
+}
+
+.meme-card img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.meme-title {
+	position: absolute;
+	inset: auto 0 0 0;
+	padding: 2rem 0.85rem 0.85rem;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0));
+	color: white;
+	opacity: 0;
+	transition: opacity 160ms ease;
+}
+
+.meme-card:hover .meme-title {
+	opacity: 1;
+}
+
+.meme-title span {
+	font-weight: 800;
+	line-height: 1.15;
+}
+
+@media (max-width: 720px) {
+	.meme-wall {
+		columns: 2;
+		column-gap: 0.75rem;
+	}
+
+	.meme-card {
+		margin-bottom: 0.75rem;
+	}
+
+	.meme-title {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 420px) {
+	.meme-wall {
+		columns: 1;
+	}
+}
+		.meme-card.wide {
+			grid-column: span 1;
+		}
+
+		.meme-title {
+			opacity: 1;
+		}
+	}
+</style>

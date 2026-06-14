@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const formatTag = (tag: string) =>
+	tag
+		.replaceAll('-', ' ')
+		.replace(/\b\w/g, (letter) => letter.toUpperCase());
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Articles | Dear Fort Smith" description="Articles from Dear Fort Smith." />
+		<style>
+			main {
+				width: 960px;
+				max-width: calc(100% - 2rem);
+				margin: 0 auto;
+				padding: 3rem 0;
+			}
+
+			.page-header {
+				margin-bottom: 2rem;
+			}
+
+			.page-header h1 {
+				margin-bottom: 0.5rem;
+			}
+
+			.article-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			.article-card {
+				width: calc(50% - 1rem);
+			}
+
+			.article-card:first-child {
+				width: 100%;
+				margin-bottom: 1rem;
+				text-align: center;
+			}
+
+			.article-link {
+				display: block;
+				text-decoration: none;
+			}
+
+			.article-image {
+				width: 100%;
+				max-height: 360px;
+				object-fit: contain;
+				background: black;
+				border-radius: 12px;
+				margin-bottom: 0.75rem;
+				transition: 0.2s ease;
+			}
+
+			.article-card:first-child .article-image {
+				max-height: 520px;
+			}
+
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1.1;
+				transition: 0.2s ease;
+			}
+
+			.article-card:first-child .title {
+				font-size: 2.369rem;
+			}
+
+			.date {
+				margin: 0.5rem 0;
+				color: rgb(var(--gray));
+				transition: 0.2s ease;
+			}
+
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 0.4rem;
+				margin-top: 0.75rem;
+			}
+
+			.article-card:not(:first-child) .tags {
+				justify-content: flex-start;
+			}
+
+			.tag {
+				display: inline-block;
+				padding: 0.25rem 0.55rem;
+				border-radius: 999px;
+				background: rgba(var(--accent), 0.12);
+				color: var(--accent);
+				font-size: 0.8rem;
+				font-weight: 700;
+				text-decoration: none;
+			}
+
+			.tag:hover {
+				background: rgba(var(--accent), 0.2);
+			}
+
+			.article-link:hover .title,
+			.article-link:hover .date {
+				color: rgb(var(--accent));
+			}
+
+			.article-link:hover .article-image {
+				box-shadow: var(--box-shadow);
+			}
+
+			@media (max-width: 720px) {
+				.article-list {
+					gap: 1.5rem;
+				}
+
+				.article-card,
+				.article-card:first-child {
+					width: 100%;
+					text-align: left;
+				}
+
+				.article-card:first-child .title {
+					font-size: 1.563rem;
+				}
+
+				.tags,
+				.article-card:not(:first-child) .tags {
+					justify-content: flex-start;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<section class="page-header">
+				<h1>Articles</h1>
+				<p>Essays, analysis, and local observations tied to the Dear Fort Smith platform.</p>
+			</section>
+
+			<section>
+				<ul class="article-list">
+					{
+						posts.map((post) => (
+							<li class="article-card">
+								<a class="article-link" href={`/blog/${post.id}/`}>
+									{post.data.heroImage && (
+										<img class="article-image" src={post.data.heroImage} alt="" />
+									)}
+
+									<h2 class="title">{post.data.title}</h2>
+
+									<p class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</a>
+
+								{post.data.tags && post.data.tags.length > 0 && (
+									<div class="tags" aria-label="Platform tags">
+										{post.data.tags.map((tag) => (
+											<a class="tag" href={`/tags/${tag}`}>
+												{formatTag(tag)}
+											</a>
+										))}
+									</div>
+								)}
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

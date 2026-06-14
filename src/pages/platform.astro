@@ -1,0 +1,462 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+const title = 'Platform | Dear Fort Smith,';
+const description = 'The Dear Fort Smith playbook for a safer, solvent, and productive city.';
+
+const platformCategories = [
+	{
+		id: 'growth-solvency',
+		title: 'Growth & Solvency',
+		description: 'Policies for making sure growth strengthens the city instead of adding permanent liabilities.',
+		items: [
+			{
+				id: 'balanced-budget',
+				title: 'Growth Pays Its Own Way',
+				text: 'New developments, extensions, and subdivisions should prove they can cover their long-term costs.',
+			},
+			{
+				id: 'do-the-math',
+				title: 'Measure Net Income',
+				text: 'Measure and publish neighborhood-level revenues, costs, assets, libailities, and other data such as vacancy rates and car crashes.',
+			},
+			{
+				id: 'finance-decoder',
+				title: 'Add Finance Decoder to Reports',
+				text: 'Add plain-language balance sheet equations to the annual financial report so residents can see whether the city is getting stronger or weaker.',
+			},
+		],
+	},
+	{
+		id: 'infrastructure-responsibility',
+		title: 'Infrastructure Responsibility',
+		description: 'Policies that make infrastructure costs visible and assign them more honestly.',
+		items: [
+			{
+				id: 'fix-it-first',
+				title: 'Fix It First Infrastructure',
+				text: 'Maintain existing streets, pipes, sidewalks, drainage, parks, and public buildings before expanding outward.',
+			},
+			{
+				id: 'utilities',
+				title: 'Utility Pricing That Reflects Infrastructure Burden',
+				text: 'Tie utility and street taxes more closely with the parcels using those services the most',
+			},
+			{
+				id: 'money-ball',
+				title: 'Neighborhood-Scale Maintenance',
+				text: 'Prioritize small, visible fixes like safe crossings, curb ramps, sidewalks, drainage repairs, school-zone safety, and traffic calming over large-scale projects.',
+			},
+		],
+	},
+{
+		id: 'public-safety',
+		title: 'Public Safety & Fire',
+		description: 'Policies that enhance the safety and security of residents and visitors.',
+		items: [
+			{
+				id: 'eyes-on-the-street',
+				title: 'Eyes on the Street',
+				text: 'Leverage economic growth to increase natural foot traffic and stimulate natural surveillance and ostracize anti-social behavior.',
+			},
+			{
+				id: 'police-visibility',
+				title: 'Police Visibility',
+				text: 'Increase human-scale police presence at all hours to engage in community policing.',
+			},
+			{
+				id: 'single-stair',
+				title: 'Single Stair',
+				text: 'Legalize single-stair buildings if they meet enhanced safety and accessibility standards.',
+			},
+		],
+	},
+
+	{
+		id: 'streets-mobility',
+		title: 'Streets & Mobility',
+		description: 'Policies for safer streets, lower-cost transportation, and less financially destructive roadway expansion.',
+		items: [
+			{
+				id: 'safe-streets',
+				title: 'Safety First',
+				text: 'Design streets that prioritize financial productivity and safety over merely moving as many cars as quickly as possible.',
+			},
+			{
+				id: 'no-new-roads',
+				title: 'No New Roads',
+				text: 'Require lifecycle replacement cost, induced-demand, and land-use productivity analysis before road widenings, bypasses, or new arterials.',
+			},
+			{
+				id: 'vmt',
+				title: 'Vehicle Miles Traveled Traffic Analysis',
+				text: 'Allow developers to substitute a Vehicle-Miles-Traveled analysis instead of a Level-of-Service analysis to measure traffic.',
+			},
+			{
+				id: 'car-dependency',
+				title: 'Mobility for All',
+				text: 'Design streets and networks giving access and mobility for walkers, cyclists, and micromobility users.',
+			},
+						{
+				id: 'street-hierarchy',
+				title: 'Hexagonal Network Topology',
+				text: 'Foster a modern network configuation that learns and adapts from the failures of older models.',
+			},
+		],
+	},
+	{
+		id: 'development-housing',
+		title: 'Development & Housing',
+		description: 'Policies that legalize small, useful, financially productive development patterns.',
+		items: [
+			{
+				id: 'incremental-development',
+				title: 'Legalize Housing',
+				text: 'Allow ADUs, duplexes, triplexes, cottage courts, small apartments, and mixed-use buildings in every neighborhood.',
+			},
+			{
+				id: 'infill',
+				title: 'Infill First',
+				text: 'Incentivize development in vacant lots and underused parcels  before extending infrastructure outward.',
+			},
+			{
+				id: 'small-business-reform',
+				title: 'Small Business and Commercial Reform',
+				text: 'Make it easier to open small shops, neighborhood cafés, offices, home businesses, live-work spaces, and upper-floor housing through zoning deregulation and other strategies.',
+			},
+		],
+	},
+	{
+		id: 'taxation-land-use',
+		title: 'Taxation & Land Use',
+		description: 'Policies that reward productive land use and stop subsidizing land waste.',
+		items: [
+			{
+				id: 'single-tax',
+				title: 'One Tax Downtown',
+				text: 'Pilot an Economic Development Zone that reduces taxes on buildings improvements, and sales while shifting the burden toward land.',
+			},
+			{
+				id: 'parking-reform',
+				title: 'End Parking Mandates',
+				text: 'Remove minimum parking requirements and let land be used for productive buildings, businesses, housing, and public life.',
+			},
+						{
+				id: 'transit-orientation',
+				title: 'Transit-Oriented Development',
+				text: 'Encourage development around transit stations to reduce car dependency and promote sustainable transportation.',
+			},
+		],
+	},
+	{
+		id: 'public-realm',
+		title: 'Public Realm & Civic Assets',
+		description: 'Policies for using public space, public land, and small-scale experiments more effectively.',
+		items: [
+			{
+				id: 'tactical-urbanism',
+				title: 'Legalize Tactical Urbanism',
+				text: 'Create a simple permit process for temporary street improvements, parklets, planters, paint, curb extensions, and safety demonstrations.',
+			},
+			{
+				id: 'public-land',
+				title: 'Capture Economic Rent',
+				text: 'Inventory city-owned land, vacant parcels, and excess right-of-way, then return its appreciation to the public via land trust or by leasing on the private market.',
+			},
+		],
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero">
+				<p class="eyebrow">Dear Fort Smith</p>
+				<h1>Platform</h1>
+
+				<p class="intro">
+					A working platform for a safer, more solvent, more productive Fort Smith.
+				</p>
+
+				<p class="tag-note">
+					Each platform item also functions as a site tag for articles, maps, memes, field notes,
+					public comments, and projects.
+				</p>
+			</section>
+
+			<section class="category-grid" aria-label="Platform categories">
+				{platformCategories.map((category) => (
+					<details class="category" id={category.id}>
+<summary>
+	<div class="summary-content">
+		<div>
+			<h2>{category.title}</h2>
+			<p>{category.description}</p>
+		</div>
+
+		<div class="summary-footer">
+			<span class="count">{category.items.length} tags</span>
+			<span class="expand-pill">
+				<span class="show-text">Show tags</span>
+				<span class="hide-text">Hide tags</span>
+			</span>
+		</div>
+	</div>
+</summary>
+
+						<div class="platform-reveal">
+	                    <ol class="platform-list">
+		                    {category.items.map((item) => (
+			                    <li id={item.id}>
+									<div class="item-header">
+										<a class="anchor-link" href={`#${item.id}`} aria-label={`Link to ${item.title}`}>
+											#
+										</a>
+										<strong>{item.title}</strong>
+									</div>
+
+									<p>{item.text}</p>
+
+									<p class="tag">
+										Tag: <code>{item.id}</code>
+									</p>
+								</li>
+							))}
+						</ol>
+                        </div>
+					</details>
+				))}
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 3rem 1rem;
+	}
+
+	.hero {
+		margin-bottom: 2rem;
+	}
+
+	.eyebrow {
+		margin: 0 0 0.5rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgb(var(--gray));
+	}
+
+	h1 {
+		margin: 0 0 1rem;
+		font-size: clamp(2.25rem, 6vw, 4rem);
+		line-height: 1;
+	}
+
+	.intro {
+		max-width: 720px;
+		font-size: 1.2rem;
+		line-height: 1.6;
+	}
+
+	.tag-note {
+		max-width: 720px;
+		margin-top: 1rem;
+		padding: 1rem;
+		border-left: 4px solid var(--accent);
+		background: rgba(var(--accent), 0.08);
+		line-height: 1.5;
+	}
+
+	.category-grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.category {
+		border: 1px solid rgba(var(--black), 0.12);
+		border-radius: 14px;
+		background: white;
+		box-shadow: 0 2px 10px rgba(var(--black), 0.05);
+		overflow: hidden;
+	}
+
+	.category summary {
+		display: block;
+		padding: 1.25rem;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	.category summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.category summary::marker {
+		content: '';
+	}
+
+	.summary-content {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.category h2 {
+		margin: 0;
+		font-size: 1.75rem;
+		line-height: 1.15;
+	}
+
+	.category summary p {
+		margin: 0.5rem 0 0;
+		line-height: 1.45;
+		color: rgb(var(--gray));
+	}
+
+	.summary-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-top: 0.25rem;
+	}
+
+	.count {
+		white-space: nowrap;
+		color: rgb(var(--gray));
+		font-size: 0.95rem;
+	}
+
+	.expand-pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.35rem 0.7rem;
+		border-radius: 999px;
+		background: rgba(var(--accent), 0.12);
+		color: var(--accent);
+		font-size: 0.85rem;
+		font-weight: 700;
+	}
+
+	.hide-text {
+		display: none;
+	}
+
+	.category[open] .show-text {
+		display: none;
+	}
+
+	.category[open] .hide-text {
+		display: inline;
+	}
+
+	.platform-reveal {
+		background: rgba(var(--accent), 0.12);
+		border-top: 1px solid rgba(var(--black), 0.08);
+		padding: 1.25rem;
+	}
+
+	.category[open] .platform-reveal {
+		animation: revealTags 300ms ease-out both;
+	}
+
+	.platform-list {
+		display: grid;
+		gap: 0.85rem;
+		margin: 0;
+		padding: 0 1.25rem 1.25rem;
+		list-style: none;
+	}
+
+	.platform-list li {
+		display: grid;
+		grid-template-columns: 220px 1fr 130px;
+		gap: 1rem;
+		align-items: start;
+		padding: 1rem;
+		border: 1px solid rgba(var(--black), 0.10);
+		border-radius: 8px;
+		background: rgb(250, 243, 243);
+		scroll-margin-top: 5rem;
+	}
+
+	.item-header {
+		display: flex;
+		align-items: baseline;
+		gap: 0.5rem;
+	}
+
+	.platform-list strong {
+		font-size: 0.95rem;
+		line-height: 1.35;
+	}
+
+	.platform-list p {
+		margin: 0;
+		line-height: 1.5;
+	}
+
+	.anchor-link {
+		text-decoration: none;
+		color: var(--accent);
+		font-weight: bold;
+	}
+
+	.tag {
+		font-size: 0.85rem;
+		color: rgb(var(--gray));
+		text-align: right;
+	}
+
+	code {
+		padding: 0.15rem 0.35rem;
+		border-radius: 4px;
+		background: rgba(var(--gray), 0.12);
+	}
+
+	@keyframes revealTags {
+		from {
+			opacity: 0;
+			transform: translateY(-0.75rem);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 800px) {
+		.category summary {
+			align-items: flex-start;
+		}
+
+		.count {
+			display: none;
+		}
+
+		.platform-list li {
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+		}
+
+		.tag {
+			text-align: left;
+		}
+	}
+</style>

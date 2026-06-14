@@ -6,7 +6,7 @@ heroImage: "/images/massard-spiral.png"
 tags:
   - safe-streets
   - no-new-roads
-  - growth-pays-for-itself
+  - balanced-budget
 ---
 Dear Fort Smith,
 

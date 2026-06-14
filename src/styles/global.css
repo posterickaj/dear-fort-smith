@@ -36,8 +36,8 @@ body {
 }
 
 main {
-	width: 720px;
-	max-width: calc(100% - 2em);
+	width: 100%;
+	max-width: 720px;
 	margin: auto;
 	padding: 3em 1em;
 }
@@ -175,4 +175,44 @@ hr {
 	clip: rect(1px, 1px, 1px, 1px);
 	clip-path: inset(50%);
 	white-space: nowrap;
+}
+main,
+section,
+.container,
+.content {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.card,
+.article-card,
+.project-card,
+.platform-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.card p,
+.article-card p,
+.project-card p,
+.platform-card p,
+.card h2,
+.article-card h2,
+.project-card h2,
+.platform-card h2 {
+  overflow-wrap: anywhere;
+}
+
+.tags,
+.tag-list,
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tags a,
+.tag-list a,
+.post-tags a {
+  white-space: normal;
 }

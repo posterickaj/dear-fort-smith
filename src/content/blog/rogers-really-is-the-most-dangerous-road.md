@@ -1,5 +1,5 @@
 ---
-title: Rogers Really is the Most Dangerous Road
+title: Rogers Ave is the Most Dangerous Place in Fort Smith
 description: Even when you control for traffic volume. It seems the more ArDot
   is involved, the more dangerous the roadway.
 pubDate: 2026-03-20

@@ -21,10 +21,10 @@ Parking is hidden even more. The cost is folded into rent, land prices, construc
 
 Take the young married couple: recent grads in a one-bedroom, third-floor walk-up apartment, still saving up for a car so they cycle to work. \
 \
-This family of two uses barely any pipes, and yet they pay the same water bill as a single retiree on a sprawling estate. 
+This family uses barely any pipes, and yet they pay the same water bill as a sprawling estate. 
 
-They contribute zero to traffic congestion, and yet pay just as much in streets tax as a family with 4 cars driving the length of the city twice a  day. 
+They contribute nothing to traffic congestion, and yet pay just as much streets tax as a family with four cars driving the length of the city twice a day. 
 
-They takes up exactly zero parking spaces, and yet they pay the same consent decree, drainage, and sewer taxes taxes caused by everyone else who parks.\
+They take no parking spaces, and yet they pay the same consent decree, drainage, and sewer taxes that are only necessary because of all our town's parking lots.\
 \
-It seems, to me at least, that we ask the poor to subsidize the wealthy, and these services essentially are free for those who squander them most.
+It seems that these city services are free for the wealthiest people in our city, because they are subsidized by those who can least afford them..

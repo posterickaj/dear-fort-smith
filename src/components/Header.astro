@@ -5,7 +5,12 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2 class="site-title">
+	<a href="/">
+		<img src="/images/dear-fort-smith-logo.svg" alt="" class="site-logo" />
+		<span>{SITE_TITLE}</span>
+	</a>
+</h2>
 		<div class="internal-links">
 	<HeaderLink href="/">Home</HeaderLink>
 	<HeaderLink href="/platform">Platform</HeaderLink>
@@ -34,6 +39,20 @@ import HeaderLink from './HeaderLink.astro';
 	h2 a.active {
 		text-decoration: none;
 	}
+.site-title a {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	text-decoration: none;
+}
+
+.site-logo {
+	width: 28px;
+	height: 44px;
+	object-fit: contain;
+	flex-shrink: 0;
+}
+
 	nav {
 		display: flex;
 		align-items: center;
@@ -61,6 +80,10 @@ import HeaderLink from './HeaderLink.astro';
 	@media (max-width: 720px) {
 	header {
 		padding: 0.75rem 1rem;
+		.site-logo {
+		width: 24px;
+		height: 38px;
+	}
 	}
 
 	nav {

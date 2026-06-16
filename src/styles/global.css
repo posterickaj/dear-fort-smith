@@ -1,14 +1,31 @@
 :root {
-	--accent: #3554c7;
-	--accent-dark: #243a8f;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+	/* Accent color. Use rgb(var(--accent)) when applying it directly. */
+	--accent: 88, 101, 242;
+	--accent-light: 160, 170, 255;
+	--accent-dark: 65, 73, 180;
+
+	/* Legacy Astro variables, rewritten for dark mode */
+	--black: 242, 243, 245;
+	--gray: 181, 186, 193;
+	--gray-light: 49, 51, 56;
+	--gray-dark: 242, 243, 245;
+	--gray-gradient: #313338, #313338;
+
+	/* Dark theme tokens */
+	--page-bg: #313338;
+	--surface: #2b2d31;
+	--surface-soft: #383a40;
+	--surface-raised: #232428;
+	--surface-tinted: #35323a;
+
+	--text: #f2f3f5;
+	--text-muted: #b5bac1;
+	--text-soft: #dbdee1;
+
+	--border: rgba(255, 255, 255, 0.12);
+	--border-strong: rgba(255, 255, 255, 0.18);
+
+	--box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
 }
 
 * {
@@ -26,11 +43,10 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
+	background: var(--page-bg);
+	color: var(--text);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
 	font-size: 20px;
 	line-height: 1.7;
 }
@@ -49,7 +65,7 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
+	color: var(--text);
 	line-height: 1.2;
 	overflow-wrap: break-word;
 }
@@ -78,14 +94,15 @@ h5 {
 strong,
 b {
 	font-weight: 700;
+	color: var(--text);
 }
 
 a {
-	color: var(--accent);
+	color: rgb(var(--accent-light));
 }
 
 a:hover {
-	color: var(--accent-dark);
+	color: rgb(var(--accent));
 }
 
 p {
@@ -99,6 +116,9 @@ p {
 textarea,
 input {
 	font-size: 16px;
+	color: var(--text);
+	background: var(--surface);
+	border: 1px solid var(--border);
 }
 
 textarea {
@@ -107,6 +127,7 @@ textarea {
 
 table {
 	width: 100%;
+	border-collapse: collapse;
 }
 
 img,
@@ -122,14 +143,17 @@ img {
 
 code {
 	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	background-color: var(--surface-raised);
+	color: var(--text-soft);
+	border-radius: 4px;
 }
 
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
 	overflow-x: auto;
+	background: var(--surface-raised);
+	border: 1px solid var(--border);
 }
 
 pre > code {
@@ -137,15 +161,126 @@ pre > code {
 }
 
 blockquote {
-	border-left: 4px solid var(--accent);
+	border-left: 4px solid rgb(var(--accent));
 	padding: 0 0 0 20px;
 	margin: 0;
+	color: var(--text-soft);
 	font-size: 1.333em;
 }
 
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	border-top: 1px solid var(--border);
+}
+
+/* Broad dark-mode helpers for common card classes */
+.card,
+.article-card,
+.project-card,
+.platform-card,
+.map-card,
+.portal-card,
+.recent-card,
+.featured-card,
+.category {
+	background: var(--surface);
+	border-color: var(--border);
+	color: var(--text);
+}
+
+.card p,
+.article-card p,
+.project-card p,
+.platform-card p,
+.map-card p,
+.portal-card p,
+.recent-card p,
+.featured-card p,
+.category p {
+	color: var(--text-soft);
+}
+
+.card h2,
+.article-card h2,
+.project-card h2,
+.platform-card h2,
+.map-card h2,
+.portal-card h2,
+.recent-card h2,
+.featured-card h2,
+.category h2,
+.card h3,
+.article-card h3,
+.project-card h3,
+.platform-card h3,
+.map-card h3,
+.portal-card h3,
+.recent-card h3,
+.featured-card h3,
+.category h3 {
+	color: var(--text);
+}
+
+main,
+section,
+.container,
+.content {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+.card,
+.article-card,
+.project-card,
+.platform-card,
+.map-card,
+.portal-card,
+.recent-card,
+.featured-card {
+	min-width: 0;
+	max-width: 100%;
+}
+
+.card p,
+.article-card p,
+.project-card p,
+.platform-card p,
+.map-card p,
+.portal-card p,
+.recent-card p,
+.featured-card p,
+.card h2,
+.article-card h2,
+.project-card h2,
+.platform-card h2,
+.map-card h2,
+.portal-card h2,
+.recent-card h2,
+.featured-card h2 {
+	overflow-wrap: anywhere;
+}
+
+.tags,
+.tag-list,
+.post-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.tags a,
+.tag-list a,
+.post-tags a {
+	white-space: normal;
+}
+
+/* Common tag treatment */
+.tag,
+.tags a,
+.tag-list a,
+.post-tags a {
+	background: rgba(var(--accent), 0.16);
+	color: rgb(var(--accent-light));
 }
 
 @media (max-width: 720px) {
@@ -175,44 +310,4 @@ hr {
 	clip: rect(1px, 1px, 1px, 1px);
 	clip-path: inset(50%);
 	white-space: nowrap;
-}
-main,
-section,
-.container,
-.content {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.card,
-.article-card,
-.project-card,
-.platform-card {
-  min-width: 0;
-  max-width: 100%;
-}
-
-.card p,
-.article-card p,
-.project-card p,
-.platform-card p,
-.card h2,
-.article-card h2,
-.project-card h2,
-.platform-card h2 {
-  overflow-wrap: anywhere;
-}
-
-.tags,
-.tag-list,
-.post-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tags a,
-.tag-list a,
-.post-tags a {
-  white-space: normal;
 }

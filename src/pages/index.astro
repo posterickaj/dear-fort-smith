@@ -63,9 +63,9 @@ const sections = [
 		<main>
 			<section class="hero">
 				<p class="eyebrow">Dear Fort Smith,</p>
-				<h1>Maps, memes, and math.</h1>
+				<h1>maps. memes. math.</h1>
 				<p class="intro">
-					Data & tools for a safe and productive Fort Smith. With a smidge of opinion and a dash of snark.
+					Geo-accounting for Fort Smith. With a dash of snark.
 				</p>
 			</section>
 
@@ -419,4 +419,54 @@ main {
 	}
 
 	}
+.featured-card,
+.recent-card,
+.portal-card {
+	background: var(--surface);
+	border-color: var(--border);
+	box-shadow: var(--box-shadow);
+	color: var(--text);
+}
+
+.featured-content h3 a,
+.recent-card h3,
+.portal-card h3 {
+	color: var(--text);
+}
+
+.featured-content h3 a:hover,
+.recent-card a:hover h3,
+.portal-card:hover h3 {
+	color: rgb(var(--accent-light));
+}
+
+.featured-content p,
+.recent-card p,
+.portal-card p {
+	color: var(--text-soft);
+}
+
+.date,
+.eyebrow {
+	color: var(--text-muted);
+}
+
+.section-heading a {
+	color: rgb(var(--accent-light));
+}
+
+.section-heading a:hover {
+	color: rgb(var(--accent));
+}
+
+.portal-section {
+	background: var(--surface-soft);
+	border: 1px solid var(--border);
+}
+
+.tag {
+	background: rgba(var(--accent), 0.22);
+	color: rgb(var(--accent-light));
+}
+
 </style>

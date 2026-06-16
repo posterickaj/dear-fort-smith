@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 
-const title = 'About | Dear Fort Smith';
+const title = 'About | Dear Fort Smith,';
 const description = 'About Dear Fort Smith.';
 ---
 
@@ -15,23 +15,28 @@ const description = 'About Dear Fort Smith.';
 
 	<body>
 		<Header />
+
 		<main>
 			<section class="about">
-				<h1>About Dear Fort Smith</h1>
+				<p class="eyebrow">Dear Fort Smith,</p>
+				<h1>About</h1>
 
-				<p>
-					Dear Fort Smith is a civic archive for maps, articles, memes, field notes,
-					public comments, and policy work focused on making Fort Smith safer, more
-					financially solvent, and more productive.
-				</p>
+				<div class="about-card">
+					<p>
+						Dear Fort Smith is a civic archive for maps, articles, memes, field notes,
+						public comments, and policy work focused on making Fort Smith safer, more
+						financially solvent, and more productive.
+					</p>
 
-				<p>
-					The project connects local observations to a practical platform: growth should
-					pay for itself, infrastructure should be maintained before expansion, streets
-					should be safe before they are fast, and land should be used productively.
-				</p>
+					<p>
+						The project connects local observations to a practical platform: growth should
+						pay for itself, infrastructure should be maintained before expansion, streets
+						should be safe before they are fast, and land should be used productively.
+					</p>
+				</div>
 			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>
@@ -43,12 +48,52 @@ const description = 'About Dear Fort Smith.';
 		padding: 3rem 1rem;
 	}
 
+	.about {
+		max-width: 720px;
+	}
+
+	.eyebrow {
+		margin: 0 0 0.5rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+	}
+
 	h1 {
-		margin-bottom: 1rem;
+		margin: 0 0 1.5rem;
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		line-height: 1;
+		color: var(--text);
+	}
+
+	.about-card {
+		padding: 1.35rem;
+		border: 1px solid var(--border);
+		border-radius: 16px;
+		background: var(--surface);
+		box-shadow: var(--box-shadow);
 	}
 
 	p {
+		margin: 0;
+		color: var(--text-soft);
 		line-height: 1.7;
 		font-size: 1.1rem;
+	}
+
+	p + p {
+		margin-top: 1.25rem;
+	}
+
+	@media (max-width: 720px) {
+		main {
+			padding: 2rem 1rem;
+		}
+
+		.about-card {
+			padding: 1rem;
+		}
 	}
 </style>

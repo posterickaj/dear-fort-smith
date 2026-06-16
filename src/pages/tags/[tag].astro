@@ -10,16 +10,16 @@ export async function getStaticPaths() {
 
 	const allTags = [...new Set(posts.flatMap((post) => post.data.tags ?? []))].sort();
 
-return allTags.map((tag) => ({
-	params: { tag },
-	props: {
-		tag,
-		allTags,
-		posts: posts
-			.filter((post) => post.data.tags?.includes(tag))
-			.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
-	},
-}));
+	return allTags.map((tag) => ({
+		params: { tag },
+		props: {
+			tag,
+			allTags,
+			posts: posts
+				.filter((post) => post.data.tags?.includes(tag))
+				.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+		},
+	}));
 }
 
 const { tag, allTags, posts } = Astro.props;
@@ -41,60 +41,74 @@ const formatTag = (tag: string) =>
 
 	<body>
 		<Header />
+
 		<main>
-			<p class="eyebrow">Platform Tag</p>
-			<h1>{formatTag(tag)}</h1>
+			<section class="page-header">
+				<p class="eyebrow">Platform Tag</p>
+				<h1>{formatTag(tag)}</h1>
 
-			<p class="intro">
-				Articles connected to this Dear Fort Smith, platform topic.
-			</p>
+				<p class="intro">
+					Articles connected to this Dear Fort Smith, platform topic.
+				</p>
 
-			<ul class="article-list">
-				{posts.map((post) => (
-					<li>
-						<a href={`/blog/${post.id}/`}>
-							{post.data.heroImage && (
-								<img src={post.data.heroImage} alt="" />
-							)}
-
-							<div>
-								<h2>{post.data.title}</h2>
-								<p class="date">
-									<FormattedDate date={post.data.pubDate} />
-								</p>
-								<p>{post.data.description}</p>
-							</div>
-						</a>
-					</li>
-				))}
-			</ul>
-            <section class="other-tags">
-	<h2>Explore other tags</h2>
-
-	<div class="other-tag-list">
-		{allTags
-			.filter((otherTag) => otherTag !== tag)
-			.map((otherTag) => (
-				<a class="other-tag-pill" href={`/tags/${otherTag}`}>
-					{formatTag(otherTag)}
+				<a class="platform-link-top" href={`/platform#${tag}`}>
+					View this tag in the platform →
 				</a>
-			))}
-	</div>
+			</section>
 
-	<p class="platform-link">
-		<a href={`/platform#${tag}`}>View this tag in the platform →</a>
-	</p>
-</section>
+			<section aria-label={`Articles tagged ${formatTag(tag)}`}>
+				<ul class="article-list">
+					{posts.map((post) => (
+						<li class="article-card">
+							<a class="article-link" href={`/blog/${post.id}/`}>
+								{post.data.heroImage && (
+									<img src={post.data.heroImage} alt="" loading="lazy" />
+								)}
+
+								<div class="article-content">
+									<p class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+
+									<h2>{post.data.title}</h2>
+
+									<p class="description">{post.data.description}</p>
+								</div>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
+
+			<section class="other-tags">
+				<h2>Explore other tags</h2>
+
+				<div class="other-tag-list">
+					{allTags
+						.filter((otherTag) => otherTag !== tag)
+						.map((otherTag) => (
+							<a class="other-tag-pill" href={`/tags/${otherTag}`}>
+								{formatTag(otherTag)}
+							</a>
+						))}
+				</div>
+			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>
 
 <style>
 	main {
-		max-width: 900px;
+		max-width: 960px;
 		margin: 0 auto;
 		padding: 3rem 1rem;
+	}
+
+	.page-header {
+		max-width: 760px;
+		margin-bottom: 2.5rem;
 	}
 
 	.eyebrow {
@@ -103,17 +117,36 @@ const formatTag = (tag: string) =>
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: rgb(var(--gray));
+		color: var(--text-muted);
 	}
 
 	h1 {
-		margin-bottom: 1rem;
+		margin: 0 0 1rem;
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		line-height: 1;
+		color: var(--text);
 	}
 
 	.intro {
-		margin-bottom: 2rem;
+		margin: 0 0 1rem;
+		max-width: 720px;
 		font-size: 1.1rem;
 		line-height: 1.6;
+		color: var(--text-soft);
+	}
+
+	.platform-link-top {
+		display: inline-flex;
+		align-items: center;
+		margin-top: 0.25rem;
+		color: rgb(var(--accent-light));
+		font-weight: 800;
+		text-decoration: none;
+	}
+
+	.platform-link-top:hover {
+		color: var(--text);
+		text-decoration: underline;
 	}
 
 	.article-list {
@@ -124,130 +157,118 @@ const formatTag = (tag: string) =>
 		padding: 0;
 	}
 
-	.article-list li {
-		border: 1px solid rgba(var(--black), 0.12);
-		border-radius: 12px;
-		background: white;
+	.article-card {
 		overflow: hidden;
+		border: 1px solid var(--border);
+		border-radius: 16px;
+		background: var(--surface);
+		box-shadow: var(--box-shadow);
 	}
 
-	.article-list a {
+	.article-link {
 		display: grid;
-		grid-template-columns: 220px 1fr;
-		gap: 1rem;
+		grid-template-columns: 240px minmax(0, 1fr);
+		gap: 1.25rem;
 		padding: 1rem;
 		color: inherit;
 		text-decoration: none;
 	}
 
-	.article-list img {
-		width: 100%;
-		height: 140px;
-		object-fit: contain;
-		background: black;
-		border-radius: 8px;
+	.article-link:hover h2 {
+		color: rgb(var(--accent-light));
 	}
 
-	.article-list h2 {
-		margin: 0 0 0.4rem;
+	.article-list img {
+		display: block;
+		width: 100%;
+		height: 150px;
+		object-fit: contain;
+		background: black;
+		border-radius: 10px;
+	}
+
+	.article-content {
+		min-width: 0;
 	}
 
 	.date {
 		margin: 0 0 0.5rem;
-		color: rgb(var(--gray));
+		color: var(--text-muted);
+		font-size: 0.95rem;
+		line-height: 1.2;
 	}
 
-	.article-list p {
+	.article-list h2 {
+		margin: 0 0 0.5rem;
+		color: var(--text);
+		font-size: clamp(1.35rem, 3vw, 2rem);
+		line-height: 1.12;
+		overflow-wrap: anywhere;
+	}
+
+	.description {
+		margin: 0;
+		color: var(--text-soft);
 		line-height: 1.5;
 	}
 
-	.article-list a:hover h2 {
-		color: rgb(var(--accent));
+	.other-tags {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.other-tags h2 {
+		margin: 0 0 1.25rem;
+		color: var(--text);
+		font-size: clamp(1.75rem, 4vw, 2.4rem);
+		line-height: 1.1;
+	}
+
+	.other-tag-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+	}
+
+	.other-tag-pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.35rem 0.7rem;
+		border: 1px solid rgba(var(--accent-light), 0.18);
+		border-radius: 999px;
+		background: rgba(var(--accent), 0.2);
+		color: rgb(var(--accent-light));
+		font-size: 0.82rem;
+		font-weight: 800;
+		line-height: 1;
+		text-decoration: none;
+	}
+
+	.other-tag-pill:hover {
+		background: rgba(var(--accent), 0.3);
+		color: var(--text);
 	}
 
 	@media (max-width: 720px) {
-		.article-list a {
+		main {
+			padding: 2rem 1rem;
+		}
+
+		.article-link {
 			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.article-list img {
+			height: auto;
+			max-height: 260px;
+		}
+
+		.other-tags {
+			margin-top: 3rem;
+			padding-top: 1.5rem;
 		}
 	}
-    .other-tags {
-	margin-top: 3rem;
-	padding-top: 1.5rem;
-	border-top: 1px solid rgba(var(--black), 0.12);
-}
-
-.other-tags h2 {
-	margin-bottom: 1rem;
-}
-
-.tag-list {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-}
-
-.tag-list a {
-	display: inline-block;
-	padding: 0.35rem 0.7rem;
-	border-radius: 999px;
-	background: rgba(var(--accent), 0.12);
-	color: var(--accent);
-	font-size: 0.85rem;
-	font-weight: 700;
-	text-decoration: none;
-}
-
-.tag-list a:hover {
-	background: rgba(var(--accent), 0.2);
-}
-
-.platform-link {
-	margin-top: 1.5rem;
-}
-.other-tags {
-	margin-top: 4rem;
-	padding-top: 2rem;
-	border-top: 1px solid rgba(var(--black), 0.12);
-}
-
-.other-tags h2 {
-	margin: 0 0 1.25rem;
-	font-size: 2rem;
-}
-
-.other-tag-list {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.65rem;
-}
-
-.other-tag-pill {
-	display: inline-block;
-	padding: 0.4rem 0.75rem;
-	border-radius: 999px;
-	background: rgba(var(--accent), 0.12);
-	color: var(--accent);
-	font-size: 0.9rem;
-	font-weight: 700;
-	text-decoration: none;
-	line-height: 1;
-}
-
-.other-tag-pill:hover {
-	background: rgba(var(--accent), 0.22);
-}
-
-.platform-link {
-	margin-top: 1.75rem;
-}
-
-.platform-link a {
-	color: var(--accent);
-	font-weight: 700;
-	text-decoration: none;
-}
-
-.platform-link a:hover {
-	text-decoration: underline;
-}
 </style>

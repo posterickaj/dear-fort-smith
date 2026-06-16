@@ -18,161 +18,41 @@ const formatTag = (tag: string) =>
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title="Articles | Dear Fort Smith" description="Articles from Dear Fort Smith." />
-		<style>
-			main {
-				width: 960px;
-				max-width: calc(100% - 2rem);
-				margin: 0 auto;
-				padding: 3rem 0;
-			}
-
-			.page-header {
-				margin-bottom: 2rem;
-			}
-
-			.page-header h1 {
-				margin-bottom: 0.5rem;
-			}
-
-			.article-list {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-
-			.article-card {
-				width: calc(50% - 1rem);
-			}
-
-			.article-card:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-
-			.article-link {
-				display: block;
-				text-decoration: none;
-			}
-
-			.article-image {
-				width: 100%;
-				max-height: 360px;
-				object-fit: contain;
-				background: black;
-				border-radius: 12px;
-				margin-bottom: 0.75rem;
-				transition: 0.2s ease;
-			}
-
-			.article-card:first-child .article-image {
-				max-height: 520px;
-			}
-
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1.1;
-				transition: 0.2s ease;
-			}
-
-			.article-card:first-child .title {
-				font-size: 2.369rem;
-			}
-
-			.date {
-				margin: 0.5rem 0;
-				color: rgb(var(--gray));
-				transition: 0.2s ease;
-			}
-
-			.tags {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: center;
-				gap: 0.4rem;
-				margin-top: 0.75rem;
-			}
-
-			.article-card:not(:first-child) .tags {
-				justify-content: flex-start;
-			}
-
-			.tag {
-				display: inline-block;
-				padding: 0.25rem 0.55rem;
-				border-radius: 999px;
-				background: rgba(var(--accent), 0.12);
-				color: var(--accent);
-				font-size: 0.8rem;
-				font-weight: 700;
-				text-decoration: none;
-			}
-
-			.tag:hover {
-				background: rgba(var(--accent), 0.2);
-			}
-
-			.article-link:hover .title,
-			.article-link:hover .date {
-				color: rgb(var(--accent));
-			}
-
-			.article-link:hover .article-image {
-				box-shadow: var(--box-shadow);
-			}
-
-			@media (max-width: 720px) {
-				.article-list {
-					gap: 1.5rem;
-				}
-
-				.article-card,
-				.article-card:first-child {
-					width: 100%;
-					text-align: left;
-				}
-
-				.article-card:first-child .title {
-					font-size: 1.563rem;
-				}
-
-				.tags,
-				.article-card:not(:first-child) .tags {
-					justify-content: flex-start;
-				}
-			}
-		</style>
+		<BaseHead title="Articles | Dear Fort Smith," description="Articles from Dear Fort Smith." />
 	</head>
 
 	<body>
 		<Header />
+
 		<main>
 			<section class="page-header">
+				<p class="eyebrow">Dear Fort Smith,</p>
 				<h1>Articles</h1>
-				<p>Essays, analysis, and local observations tied to the Dear Fort Smith platform.</p>
+				<p>Essays and analysis sorted chronologically.</p>
 			</section>
 
-			<section>
+			<section aria-label="Articles">
 				<ul class="article-list">
-					{
-						posts.map((post) => (
-							<li class="article-card">
-								<a class="article-link" href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<img class="article-image" src={post.data.heroImage} alt="" />
-									)}
-
-									<h2 class="title">{post.data.title}</h2>
-
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
+					{posts.map((post, index) => (
+						<li class={`article-card ${index === 0 ? 'featured' : ''}`}>
+							{post.data.heroImage && (
+								<a class="image-link" href={`/blog/${post.id}/`}>
+									<img class="article-image" src={post.data.heroImage} alt="" />
 								</a>
+							)}
+
+							<div class="article-content">
+								<p class="date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+
+								<h2 class="title">
+									<a href={`/blog/${post.id}/`}>
+										{post.data.title}
+									</a>
+								</h2>
+
+								<p class="description">{post.data.description}</p>
 
 								{post.data.tags && post.data.tags.length > 0 && (
 									<div class="tags" aria-label="Platform tags">
@@ -183,12 +63,209 @@ const formatTag = (tag: string) =>
 										))}
 									</div>
 								)}
-							</li>
-						))
-					}
+							</div>
+						</li>
+					))}
 				</ul>
 			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>
+
+<style>
+	main {
+		width: 1040px;
+		max-width: calc(100% - 2rem);
+		margin: 0 auto;
+		padding: 3rem 0;
+	}
+
+	.page-header {
+		margin-bottom: 2rem;
+	}
+
+	.eyebrow {
+		margin: 0 0 0.5rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+	}
+
+	.page-header h1 {
+		margin: 0 0 0.5rem;
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		color: var(--text);
+	}
+
+	.page-header p {
+		max-width: 720px;
+		color: var(--text-soft);
+	}
+
+	.article-list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.5rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.article-card {
+		min-width: 0;
+		overflow: hidden;
+		border: 1px solid var(--border);
+		border-radius: 16px;
+		background: var(--surface);
+		box-shadow: var(--box-shadow);
+	}
+
+	.article-card.featured {
+		grid-column: 1 / -1;
+		display: grid;
+		grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+		align-items: stretch;
+	}
+
+	.image-link {
+		display: block;
+		background: black;
+		text-decoration: none;
+	}
+
+	.article-image {
+		display: block;
+		width: 100%;
+		height: 260px;
+		object-fit: contain;
+		background: black;
+		border-radius: 0;
+		transition:
+			transform 180ms ease,
+			opacity 180ms ease;
+	}
+
+	.article-card.featured .article-image {
+		height: 100%;
+		min-height: 380px;
+	}
+
+	.article-content {
+		padding: 1.25rem;
+	}
+
+	.article-card.featured .article-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 2rem;
+	}
+
+	.date {
+		margin: 0 0 0.6rem;
+		color: var(--text-muted);
+		font-size: 0.95rem;
+		line-height: 1.2;
+	}
+
+	.title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.45rem, 3vw, 2.15rem);
+		line-height: 1.08;
+		overflow-wrap: anywhere;
+	}
+
+	.article-card.featured .title {
+		font-size: clamp(2rem, 5vw, 3.1rem);
+	}
+
+	.title a {
+		color: var(--text);
+		text-decoration: none;
+	}
+
+	.title a:hover {
+		color: rgb(var(--accent-light));
+	}
+
+	.description {
+		margin: 0;
+		color: var(--text-soft);
+		font-size: 1rem;
+		line-height: 1.45;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+		margin-top: 1rem;
+	}
+
+	.tag {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.28rem 0.6rem;
+		border: 1px solid rgba(var(--accent-light), 0.18);
+		border-radius: 999px;
+		background: rgba(var(--accent), 0.2);
+		color: rgb(var(--accent-light));
+		font-size: 0.76rem;
+		font-weight: 800;
+		line-height: 1;
+		text-decoration: none;
+	}
+
+	.tag:hover {
+		background: rgba(var(--accent), 0.3);
+		color: var(--text);
+	}
+
+	.article-card:hover .article-image {
+		opacity: 0.92;
+		transform: scale(1.01);
+	}
+
+	@media (max-width: 850px) {
+		main {
+			max-width: 100%;
+			padding: 2rem 1rem;
+		}
+
+		.article-list {
+			grid-template-columns: 1fr;
+			gap: 1.25rem;
+		}
+
+		.article-card.featured {
+			display: block;
+		}
+
+		.article-image,
+		.article-card.featured .article-image {
+			height: auto;
+			min-height: 0;
+			max-height: 420px;
+		}
+
+		.article-content,
+		.article-card.featured .article-content {
+			padding: 1rem;
+		}
+
+		.article-card.featured .title,
+		.title {
+			font-size: 1.45rem;
+			line-height: 1.12;
+		}
+
+		.description {
+			font-size: 0.95rem;
+		}
+	}
+</style>

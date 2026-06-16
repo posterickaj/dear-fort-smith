@@ -7,14 +7,95 @@ import Footer from '../components/Footer.astro';
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title="Newsletter | Dear Fort Smith" description="Subscribe to the Dear Fort Smith newsletter." />
+		<BaseHead
+			title="Newsletter | Dear Fort Smith,"
+			description="Subscribe to the Dear Fort Smith newsletter."
+		/>
 	</head>
+
 	<body>
 		<Header />
+
 		<main>
-			<h1>Newsletter</h1>
-			<p>Coming Soon.</p>
+			<section class="page-header">
+				<p class="eyebrow">Dear Fort Smith,</p>
+				<h1>Newsletter</h1>
+				<p>
+					For Safety and other Dear Fort Smith updates will live here eventually.
+				</p>
+			</section>
+
+			<section class="coming-soon-card">
+				<h2>Coming soon</h2>
+				<p>
+					This page will eventually include a newsletter signup, past issues, and
+					public safety updates.
+				</p>
+			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>
+
+<style>
+	main {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 3rem 1rem;
+	}
+
+	.page-header {
+		max-width: 720px;
+		margin-bottom: 2rem;
+	}
+
+	.eyebrow {
+		margin: 0 0 0.5rem;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+	}
+
+	h1 {
+		margin: 0 0 1rem;
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		line-height: 1;
+		color: var(--text);
+	}
+
+	.page-header p {
+		margin: 0;
+		line-height: 1.6;
+		font-size: 1.1rem;
+		color: var(--text-soft);
+	}
+
+	.coming-soon-card {
+		max-width: 720px;
+		padding: 1.25rem;
+		border: 1px solid var(--border);
+		border-radius: 16px;
+		background: var(--surface);
+		box-shadow: var(--box-shadow);
+	}
+
+	.coming-soon-card h2 {
+		margin: 0 0 0.5rem;
+		color: var(--text);
+	}
+
+	.coming-soon-card p {
+		margin: 0;
+		color: var(--text-soft);
+		line-height: 1.55;
+	}
+
+	@media (max-width: 720px) {
+		main {
+			padding: 2rem 1rem;
+		}
+	}
+</style>

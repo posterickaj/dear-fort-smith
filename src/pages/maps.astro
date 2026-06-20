@@ -47,6 +47,30 @@ const maps = [
 		image: '/images/maps/business-licenses-preview.png',
 		tags: ['money-ball', 'parking-reform', 'do-the-math'],
 	},
+			{
+		title: 'Fort Smith Roundabouts',
+		description:
+			'My map of roundabouts, roundabout-like rotaries, and "notabouts" (things that look like, but are not, roundabouts).',
+		url: 'https://www.google.com/maps/d/edit?mid=15P0ObngpHxXRSbj_WPcDGJ-FeeiYHjE',
+		image: '/images/maps/roundabouts_preview.png',
+		tags: ['safe-streets'],
+	},
+				{
+		title: 'Fort Smith Tresspaths',
+		description:
+			'My map of unofficial, unintended, or illegal paths for pedestrians to get through the city in ways that most people may not know about.',
+		url: 'https://www.google.com/maps/d/edit?mid=1VPrdDAPgmEePSvKEa_fhruml2moatEM',
+		image: '/images/maps/tresspaths_preview.png',
+		tags: ['safe-streets','car-dependency'],
+	},
+					{
+		title: 'Legacy Loop (Cancelled)',
+		description:
+			'My unofficial map of a proposed cycling and walking trail that was cancelled by the city.',
+		url: 'https://www.google.com/maps/d/edit?mid=1qk6_prhfT_vXoZVpY2PChLcnAXxwYME',
+		image: '/images/maps/original-legacy-loop.png',
+		tags: ['safe-streets','car-dependency'],
+	},
 	{
 		title: 'Arkansas Crash Analytics Tool',
 		description:
@@ -240,22 +264,22 @@ const formatTag = (tag: string) =>
 		overflow-wrap: anywhere;
 	}
 
-	.external-pill {
-		flex-shrink: 0;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0.28rem 0.6rem;
-		border: 1px solid rgba(var(--accent-light), 0.18);
-		border-radius: 999px;
-		background: rgba(var(--accent), 0.16);
-		color: rgb(var(--accent-light));
-		font-size: 0.72rem;
-		font-weight: 800;
-		line-height: 1;
-		text-transform: uppercase;
-		letter-spacing: 0.04em;
-	}
+.external-pill {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.32rem 0.65rem;
+	border: 1px solid rgba(251, 191, 36, 0.45);
+	border-radius: 999px;
+	background: rgba(251, 191, 36, 0.16);
+	color: #fbbf24;
+	font-size: 0.72rem;
+	font-weight: 900;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
 
 	.map-content p {
 		margin: 0;

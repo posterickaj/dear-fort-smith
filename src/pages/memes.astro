@@ -9,7 +9,7 @@ const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const title = 'Memes | Dear Fort Smith,';
-const description = 'A visual wall of Dear Fort Smith, articles, maps, memes, and urbanist arguments.';
+const description = 'Articles with no headlines and sorted randomly.';
 ---
 
 <!doctype html>
@@ -26,7 +26,7 @@ const description = 'A visual wall of Dear Fort Smith, articles, maps, memes, an
 				<p class="eyebrow">Dear Fort Smith,</p>
 				<h1>Memes</h1>
 				<p>
-					A visual way to explore the site. Click an image to open the article behind it.
+					Articles with no headlines and sorted randomly.
 				</p>
 
 				<button id="shuffleButton" type="button">Shuffle the wall</button>
@@ -208,16 +208,10 @@ const description = 'A visual wall of Dear Fort Smith, articles, maps, memes, an
 			margin-bottom: 0.75rem;
 		}
 
-		.meme-title {
-			opacity: 1;
-			padding: 2rem 0.55rem 0.55rem;
-		}
+.meme-title {
+	display: none;
+}
 
-		.meme-title span {
-			font-size: clamp(0.8rem, 3.8vw, 1.05rem);
-			line-height: 1.05;
-			-webkit-text-stroke: 0.75px rgba(0, 0, 0, 0.95);
-		}
 	}
 
 	@media (max-width: 420px) {

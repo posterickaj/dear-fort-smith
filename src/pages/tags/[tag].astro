@@ -5,10 +5,202 @@ import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 
+const playbookItems = [
+	{
+		id: 'eyes-on-the-street',
+		title: 'Eyes on the Street',
+		text: 'Leverage economic activity, housing, and foot traffic to increase natural surveillance and discourage anti-social behavior.',
+		anchor: '/platform#police-fire-eyes-on-the-street',
+	},
+	{
+		id: 'police-visibility',
+		title: 'Police Visibility',
+		text: 'Increase human-scale police presence at all hours through community policing, foot patrols, bike patrols, and visible neighborhood engagement.',
+		anchor: '/platform#police-fire-police-visibility',
+	},
+	{
+		id: 'single-stair',
+		title: 'Single Stair',
+		text: 'Legalize single-stair buildings if they meet enhanced fire-safety, building-safety, and accessibility standards.',
+		anchor: '/platform#police-fire-single-stair',
+	},
+	{
+		id: 'smaller-trucks',
+		title: 'Smaller Fire Trucks',
+		text: 'So long as trucks are cheaper than roads, fund the Fire Department with smaller, more maneuverable fire trucks for use in areas with a more traditional, compact urban form.',
+		anchor: '/platform#police-fire-smaller-trucks',
+	},
+	{
+		id: 'smaller-elevators',
+		title: 'Smaller Elevators',
+		text: 'Legalize smaller elevators in residential buildings to improve accessibility and reduce construction costs.',
+		anchor: '/platform#police-fire-smaller-elevators',
+	},
+	{
+		id: 'tactical-urbanism',
+		title: 'Legalize Tactical Urbanism',
+		text: 'Create a simple permit process for temporary street improvements, parklets, planters, paint, curb extensions, and safety demonstrations.',
+		anchor: '/platform#parks-public-spaces-tactical-urbanism',
+	},
+	{
+		id: 'money-ball',
+		title: 'Moneyball for City Government',
+		text: 'Use small, measurable, high-return public investments instead of defaulting to large projects whose benefits are difficult to prove.',
+		anchor: '/platform#finance-administration-money-ball',
+	},
+	{
+		id: 'small-business-reform',
+		title: 'Neighborhood Enterprise',
+		text: 'Legalize neighborhood-scale shops, cafés, offices, childcare, schools, clinics, home businesses, live-work spaces, and other useful daily services within walking distance of homes.',
+		anchor: '/platform#neighborhood-services-small-business-reform',
+	},
+	{
+		id: 'incremental-development',
+		title: 'Legalize Housing',
+		text: 'Allow ADUs, duplexes, triplexes, cottage courts, small apartments, and mixed-use buildings in every neighborhood.',
+		anchor: '/platform#neighborhood-services-incremental-development',
+	},
+	{
+		id: 'infill',
+		title: 'Infill First',
+		text: 'Incentivize development in vacant lots and underused parcels before extending infrastructure outward.',
+		anchor: '/platform#neighborhood-services-infill',
+	},
+	{
+		id: 'parking-reform',
+		title: 'End Parking Mandates',
+		text: 'Remove minimum parking requirements and let land be used for productive buildings, businesses, housing, and public life.',
+		anchor: '/platform#planning-zoning-parking-reform',
+	},
+	{
+		id: 'street-hierarchy',
+		title: 'Hexagonal Network Topology',
+		text: 'Develop a modern street-network configuration that learns from the failures of older hierarchical models.',
+		anchor: '/platform#planning-zoning-street-hierarchy',
+	},
+	{
+		id: 'form-based-code',
+		title: 'Form-Based Code',
+		text: 'Protect, nurture, and expand the downtown form-based code.',
+		anchor: '/platform#planning-zoning-form-based-code',
+	},
+	{
+		id: 'balanced-budget',
+		title: 'Growth Pays Its Own Way',
+		text: 'New developments, extensions, and subdivisions should prove they can cover their long-term public costs.',
+		anchor: '/platform#planning-zoning-balanced-budget',
+	},
+	{
+		id: 'safe-streets',
+		title: 'Safety First',
+		text: 'Design streets that prioritize financial productivity and safety over merely moving as many cars as quickly as possible.',
+		anchor: '/platform#streets-traffic-safe-streets',
+	},
+	{
+		id: 'no-new-roads',
+		title: 'No New Roads',
+		text: 'Require lifecycle replacement cost, induced-demand, and land-use productivity analysis before any new road construction.',
+		anchor: '/platform#streets-traffic-no-new-roads',
+	},
+	{
+		id: 'vmt',
+		title: 'Vehicle Miles Traveled Traffic Analysis',
+		text: 'Allow developers to substitute a Vehicle-Miles-Traveled analysis instead of a Level-of-Service analysis to measure traffic impacts.',
+		anchor: '/platform#streets-traffic-vmt',
+	},
+	{
+		id: 'car-dependency',
+		title: 'Reduce Car Dependency',
+		text: 'Treat transit as part of a broader access system that reduces household transportation costs and gives residents more ways to reach daily needs.',
+		anchor: '/platform#transit-car-dependency',
+	},
+	{
+		id: 'ridership-first-transit',
+		title: 'Ridership-First Transit',
+		text: 'Prioritize transit routes and service design around ridership rather than maximum geographic coverage. This lowers cost per passenger mile and allows the city to improve service frequency.',
+		anchor: '/platform#transit-ridership-first-transit',
+	},
+	{
+		id: 'transit-orientation',
+		title: 'Transit-Oriented Development',
+		text: 'Encourage housing, jobs, schools, services, and public activity near useful transit corridors so buses serve more people with fewer wasted miles.',
+		anchor: '/platform#transit-transit-orientation',
+	},
+	{
+		id: 'utilities',
+		title: 'Utility Pricing That Reflects Infrastructure Burden',
+		text: 'Tie utility and street taxes more closely to the parcels and development patterns that create the greatest infrastructure burden.',
+		anchor: '/platform#utilities-utilities',
+	},
+	{
+		id: 'fix-it-first',
+		title: 'Fix It First Infrastructure',
+		text: 'Maintain existing streets, pipes, sidewalks, drainage, parks, and public buildings before expanding outward.',
+		anchor: '/platform#utilities-fix-it-first',
+	},
+	{
+		id: 'do-the-math',
+		title: 'Measure Net Income',
+		text: 'Measure and publish neighborhood-level revenues, costs, assets, liabilities, vacancy rates, crashes, infrastructure age, and other practical indicators.',
+		anchor: '/platform#finance-administration-do-the-math',
+	},
+	{
+		id: 'finance-decoder',
+		title: 'Add Finance Decoder to Reports',
+		text: 'Add plain-language balance sheet equations to the annual financial report so residents can see whether the city is getting stronger or weaker.',
+		anchor: '/platform#finance-administration-finance-decoder',
+	},
+	{
+		id: 'citizens-dividend',
+		title: 'Capture Economic Rent',
+		text: 'Measure community-created wealth, then return its appreciation to the public through a citizens dividend.',
+		anchor: '/platform#finance-administration-citizens-dividend',
+	},
+	{
+		id: 'single-tax',
+		title: 'One Tax Downtown',
+		text: 'Pilot an Economic Development Zone that reduces taxes on building improvements and sales while shifting the burden toward land.',
+		anchor: '/platform#economic-development-single-tax',
+	},
+];
+
+const playbookItemMap = new Map(playbookItems.map((item) => [item.id, item]));
+
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
 
-	const allTags = [...new Set(posts.flatMap((post) => post.data.tags ?? []))].sort();
+	const articleTags = posts.flatMap((post) => post.data.tags ?? []);
+
+	const playbookTags = [
+		'eyes-on-the-street',
+		'police-visibility',
+		'single-stair',
+		'smaller-trucks',
+		'smaller-elevators',
+		'tactical-urbanism',
+		'money-ball',
+		'small-business-reform',
+		'incremental-development',
+		'infill',
+		'parking-reform',
+		'street-hierarchy',
+		'form-based-code',
+		'balanced-budget',
+		'safe-streets',
+		'no-new-roads',
+		'vmt',
+		'car-dependency',
+		'ridership-first-transit',
+		'transit-orientation',
+		'utilities',
+		'fix-it-first',
+		'do-the-math',
+		'finance-decoder',
+		'citizens-dividend',
+		'single-tax',
+	];
+
+	const allTags = [...new Set([...playbookTags, ...articleTags])].sort();
 
 	return allTags.map((tag) => ({
 		params: { tag },
@@ -23,19 +215,22 @@ export async function getStaticPaths() {
 }
 
 const { tag, allTags, posts } = Astro.props;
+const playbookItem = playbookItemMap.get(tag) ?? null;
 
 const formatTag = (tag: string) =>
 	tag
 		.replaceAll('-', ' ')
 		.replace(/\b\w/g, (letter) => letter.toUpperCase());
+
+const pageTitle = playbookItem?.title ?? formatTag(tag);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead
-			title={`${formatTag(tag)} | Dear Fort Smith,`}
-			description={`Articles tagged ${formatTag(tag)}.`}
+			title={`${pageTitle} | Dear Fort Smith,`}
+			description={`Articles tagged ${pageTitle}.`}
 		/>
 	</head>
 
@@ -45,39 +240,62 @@ const formatTag = (tag: string) =>
 		<main>
 			<section class="page-header">
 				<p class="eyebrow">Playbook Tag</p>
-				<h1>{formatTag(tag)}</h1>
+				<h1>{pageTitle}</h1>
 
-				<p class="intro">
-					Articles connected to this Dear Fort Smith, playbook topic.
-				</p>
+				{playbookItem ? (
+					<p class="playbook-definition">{playbookItem.text}</p>
+				) : (
+					<p class="intro">
+						Articles connected to this Dear Fort Smith, topic.
+					</p>
+				)}
 
-				<a class="platform-link-top" href={`/platform#${tag}`}>
-					View this tag in the playbook →
-				</a>
+				{playbookItem ? (
+					<a class="platform-link-top" href={playbookItem.anchor}>
+						View this item in the playbook →
+					</a>
+				) : (
+					<a class="platform-link-top" href="/platform">
+						View the full playbook →
+					</a>
+				)}
 			</section>
 
-			<section aria-label={`Articles tagged ${formatTag(tag)}`}>
-				<ul class="article-list">
-					{posts.map((post) => (
-						<li class="article-card">
-							<a class="article-link" href={`/blog/${post.id}/`}>
-								{post.data.heroImage && (
-									<img src={post.data.heroImage} alt="" loading="lazy" />
-								)}
+			<section aria-label={`Articles tagged ${pageTitle}`}>
+				{posts.length > 0 ? (
+					<ul class="article-list">
+						{posts.map((post) => (
+							<li class="article-card">
+								<a
+									class={`article-link ${post.data.heroImage ? '' : 'no-image'}`}
+									href={`/blog/${post.id}/`}
+								>
+									{post.data.heroImage && (
+										<img src={post.data.heroImage} alt="" loading="lazy" />
+									)}
 
-								<div class="article-content">
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
+									<div class="article-content">
+										<p class="date">
+											<FormattedDate date={post.data.pubDate} />
+										</p>
 
-									<h2>{post.data.title}</h2>
+										<h2>{post.data.title}</h2>
 
-									<p class="description">{post.data.description}</p>
-								</div>
-							</a>
-						</li>
-					))}
-				</ul>
+										<p class="description">{post.data.description}</p>
+									</div>
+								</a>
+							</li>
+						))}
+					</ul>
+				) : (
+					<div class="empty-card">
+						<h2>No posts here yet</h2>
+						<p>
+							This playbook tag exists, but there are not yet any articles or memes
+							assigned to it.
+						</p>
+					</div>
+				)}
 			</section>
 
 			<section class="other-tags">
@@ -88,7 +306,7 @@ const formatTag = (tag: string) =>
 						.filter((otherTag) => otherTag !== tag)
 						.map((otherTag) => (
 							<a class="other-tag-pill" href={`/tags/${otherTag}`}>
-								{formatTag(otherTag)}
+								{playbookItemMap.get(otherTag)?.title ?? formatTag(otherTag)}
 							</a>
 						))}
 				</div>
@@ -127,12 +345,19 @@ const formatTag = (tag: string) =>
 		color: var(--text);
 	}
 
-	.intro {
+	.intro,
+	.playbook-definition {
 		margin: 0 0 1rem;
 		max-width: 720px;
 		font-size: 1.1rem;
 		line-height: 1.6;
 		color: var(--text-soft);
+	}
+
+	.playbook-definition {
+		padding: 1rem;
+		border-left: 4px solid rgb(var(--accent-light));
+		background: rgba(var(--accent), 0.12);
 	}
 
 	.platform-link-top {
@@ -157,7 +382,8 @@ const formatTag = (tag: string) =>
 		padding: 0;
 	}
 
-	.article-card {
+	.article-card,
+	.empty-card {
 		overflow: hidden;
 		border: 1px solid var(--border);
 		border-radius: 16px;
@@ -172,6 +398,10 @@ const formatTag = (tag: string) =>
 		padding: 1rem;
 		color: inherit;
 		text-decoration: none;
+	}
+
+	.article-link.no-image {
+		grid-template-columns: 1fr;
 	}
 
 	.article-link:hover h2 {
@@ -198,7 +428,8 @@ const formatTag = (tag: string) =>
 		line-height: 1.2;
 	}
 
-	.article-list h2 {
+	.article-list h2,
+	.empty-card h2 {
 		margin: 0 0 0.5rem;
 		color: var(--text);
 		font-size: clamp(1.35rem, 3vw, 2rem);
@@ -210,6 +441,16 @@ const formatTag = (tag: string) =>
 		margin: 0;
 		color: var(--text-soft);
 		line-height: 1.5;
+	}
+
+	.empty-card {
+		padding: 1.25rem;
+	}
+
+	.empty-card p {
+		margin: 0;
+		color: var(--text-soft);
+		line-height: 1.55;
 	}
 
 	.other-tags {

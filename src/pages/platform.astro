@@ -3,113 +3,73 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 
-const title = 'Platform | Dear Fort Smith,';
-const description = 'The Dear Fort Smith playbook for a safer, solvent, and productive city.';
+const title = 'Playbook | Dear Fort Smith,';
+const description = 'My playbook for a safer, solvent, and productive city.';
 
 const platformCategories = [
 	{
-		id: 'growth-solvency',
-		title: 'Growth & Solvency',
-		description: 'Policies for making sure growth strengthens the city instead of adding permanent liabilities.',
-		items: [
-			{
-				id: 'balanced-budget',
-				title: 'Growth Pays Its Own Way',
-				text: 'New developments, extensions, and subdivisions should prove they can cover their long-term costs.',
-			},
-			{
-				id: 'do-the-math',
-				title: 'Measure Net Income',
-				text: 'Measure and publish neighborhood-level revenues, costs, assets, liabilities, and other data such as vacancy rates and car crashes.',
-			},
-			{
-				id: 'finance-decoder',
-				title: 'Add Finance Decoder to Reports',
-				text: 'Add plain-language balance sheet equations to the annual financial report so residents can see whether the city is getting stronger or weaker.',
-			},
-		],
-	},
-	{
-		id: 'infrastructure-responsibility',
-		title: 'Infrastructure Responsibility',
-		description: 'Policies that make infrastructure costs visible and assign them more honestly.',
-		items: [
-			{
-				id: 'fix-it-first',
-				title: 'Fix It First Infrastructure',
-				text: 'Maintain existing streets, pipes, sidewalks, drainage, parks, and public buildings before expanding outward.',
-			},
-			{
-				id: 'utilities',
-				title: 'Utility Pricing That Reflects Infrastructure Burden',
-				text: 'Tie utility and street taxes more closely with the parcels using those services the most.',
-			},
-			{
-				id: 'money-ball',
-				title: 'Neighborhood-Scale Maintenance',
-				text: 'Prioritize small, visible fixes like safe crossings, curb ramps, sidewalks, drainage repairs, school-zone safety, and traffic calming over large-scale projects.',
-			},
-		],
-	},
-	{
-		id: 'public-safety',
-		title: 'Public Safety & Fire',
-		description: 'Policies that enhance the safety and security of residents and visitors.',
+		id: 'police-fire',
+		title: 'Police & Fire',
+		description:
+			'Reduce preventable harm before emergency response is needed.',
 		items: [
 			{
 				id: 'eyes-on-the-street',
 				title: 'Eyes on the Street',
-				text: 'Leverage economic growth to increase natural foot traffic and stimulate natural surveillance and ostracize anti-social behavior.',
+				text: 'Leverage economic activity, housing, and foot traffic to increase natural surveillance and discourage anti-social behavior.',
 			},
 			{
 				id: 'police-visibility',
 				title: 'Police Visibility',
-				text: 'Increase human-scale police presence at all hours to engage in community policing.',
+				text: 'Increase human-scale police presence at all hours through community policing, foot patrols, bike patrols, and visible neighborhood engagement.',
 			},
 			{
 				id: 'single-stair',
 				title: 'Single Stair',
-				text: 'Legalize single-stair buildings if they meet enhanced safety and accessibility standards.',
+				text: 'Legalize single-stair buildings if they meet enhanced fire-safety, building-safety, and accessibility standards.',
+			},
+			{
+				id: 'smaller-trucks',
+				title: 'Smaller Fire Trucks',
+				text: 'So long as trucks are cheaper than roads, fund the Fire Department with smaller, more maneuverable fire trucks for use in areas with a more traditional, compact urban form.',
+			},
+						{
+				id: 'smaller-elevators',
+				title: 'Smaller Elevators',
+				text: 'Legalize smaller elevators in residential buildings to improve accessibility and reduce construction costs.',
 			},
 		],
 	},
 	{
-		id: 'streets-mobility',
-		title: 'Streets & Mobility',
-		description: 'Policies for safer streets, lower-cost transportation, and less financially destructive roadway expansion.',
+		id: 'parks-public-spaces',
+		title: 'Parks & Public Spaces',
+		description:
+			'Make neighborhoods useful.',
 		items: [
 			{
-				id: 'safe-streets',
-				title: 'Safety First',
-				text: 'Design streets that prioritize financial productivity and safety over merely moving as many cars as quickly as possible.',
+				id: 'tactical-urbanism',
+				title: 'Legalize Tactical Urbanism',
+				text: 'Create a simple permit process for temporary street improvements, parklets, planters, paint, curb extensions, and safety demonstrations.',
 			},
+
 			{
-				id: 'no-new-roads',
-				title: 'No New Roads',
-				text: 'Require lifecycle replacement cost, induced-demand, and land-use productivity analysis before road widenings, bypasses, or new arterials.',
-			},
-			{
-				id: 'vmt',
-				title: 'Vehicle Miles Traveled Traffic Analysis',
-				text: 'Allow developers to substitute a Vehicle-Miles-Traveled analysis instead of a Level-of-Service analysis to measure traffic.',
-			},
-			{
-				id: 'car-dependency',
-				title: 'Mobility for All',
-				text: 'Design streets and networks giving access and mobility for walkers, cyclists, and micromobility users.',
-			},
-			{
-				id: 'street-hierarchy',
-				title: 'Hexagonal Network Topology',
-				text: 'Foster a modern network configuration that learns and adapts from the failures of older models.',
+				id: 'money-ball',
+				title: 'Neighborhood-Scale Maintenance',
+				text: 'Prioritize small, visible fixes like safe crossings, curb ramps, sidewalks, drainage repairs, school-zone safety, park repairs, and traffic calming over large-scale prestige projects.',
 			},
 		],
 	},
 	{
-		id: 'development-housing',
-		title: 'Development & Housing',
-		description: 'Policies that legalize small, useful, financially productive development patterns.',
+		id: 'neighborhood-services',
+		title: 'Neighborhood Services',
+		description:
+			'Make Fort Smith livable.',
 		items: [
+			{
+				id: 'small-business-reform',
+				title: 'Neighborhood Enterprise',
+				text: 'Legalize neighborhood-scale shops, cafés, offices, childcare, schools, clinics, home businesses, live-work spaces, and other useful daily services within walking distance of homes.',
+			},
 			{
 				id: 'incremental-development',
 				title: 'Legalize Housing',
@@ -120,17 +80,140 @@ const platformCategories = [
 				title: 'Infill First',
 				text: 'Incentivize development in vacant lots and underused parcels before extending infrastructure outward.',
 			},
+		],
+	},
+	{
+		id: 'planning-zoning',
+		title: 'Planning & Zoning',
+		description:
+			'Productive development patterns and reductions to artificial scarcity.',
+		items: [
 			{
-				id: 'small-business-reform',
-				title: 'Small Business and Commercial Reform',
-				text: 'Make it easier to open small shops, neighborhood cafés, offices, home businesses, live-work spaces, and upper-floor housing through zoning deregulation and other strategies.',
+				id: 'parking-reform',
+				title: 'End Parking Mandates',
+				text: 'Remove minimum parking requirements and let land be used for productive buildings, businesses, housing, and public life.',
+			},
+			{
+				id: 'street-hierarchy',
+				title: 'Hexagonal Network Topology',
+				text: 'Develop a modern street-network configuration that learns from the failures of older hierarchical models.',
+			},
+						{
+				id: 'form-based-code',
+				title: 'Form-Based Code',
+				text: 'Protect, nurture, and expand the downtown form-based code.',
+			},
+						{
+				id: 'balanced-budget',
+				title: 'Growth Pays Its Own Way',
+				text: 'New developments, extensions, and subdivisions should prove they can cover their long-term public costs.',
 			},
 		],
 	},
 	{
-		id: 'taxation-land-use',
-		title: 'Taxation & Land Use',
-		description: 'Policies that reward productive land use and stop subsidizing land waste.',
+		id: 'streets-traffic',
+		title: 'Streets & Traffic',
+		description:
+			'Safer streets, lower transportation costs, and less financially destructive roadway expansion.',
+		items: [
+			{
+				id: 'safe-streets',
+				title: 'Safety First',
+				text: 'Design streets that prioritize financial productivity and safety over merely moving as many cars as quickly as possible.',
+			},
+			{
+				id: 'no-new-roads',
+				title: 'No New Roads',
+				text: 'Require lifecycle replacement cost, induced-demand, and land-use productivity analysis before any new road construction.',
+			},
+			{
+				id: 'vmt',
+				title: 'Vehicle Miles Traveled Traffic Analysis',
+				text: 'Allow developers to substitute a Vehicle-Miles-Traveled analysis instead of a Level-of-Service analysis to measure traffic impacts.',
+			},
+			{
+				id: 'car-dependency',
+				title: 'Mobility for All',
+				text: 'Design streets and networks that give real access and mobility to walkers, cyclists, wheelchair users, transit riders, and micromobility users.',
+			},
+		],
+	},
+	{
+		id: 'transit',
+		title: 'Transit',
+		description:
+			'Transit that is useful, more frequent, and more financially coherent.',
+		items: [
+			{
+				id: 'ridership-first-transit',
+				title: 'Ridership-First Transit',
+				text: 'Prioritize transit routes and service design around ridership rather than maximum geographic coverage. This lowers cost per passenger mile and allows the city to improve service frequency.',
+			},
+			{
+				id: 'transit-orientation',
+				title: 'Transit-Oriented Development',
+				text: 'Encourage housing, jobs, schools, services, and public activity near useful transit corridors so buses serve more people with fewer wasted miles.',
+			},
+			{
+				id: 'car-dependency',
+				title: 'Reduce Car Dependency',
+				text: 'Treat transit as part of a broader access system that reduces household transportation costs and gives residents more ways to reach daily needs.',
+			},
+		],
+	},
+	{
+		id: 'utilities',
+		title: 'Utilities',
+		description:
+			'Make water, sewer, drainage, and infrastructure costs visible.',
+		items: [
+			{
+				id: 'utilities',
+				title: 'Utility Pricing That Reflects Infrastructure Burden',
+				text: 'Tie utility and street taxes more closely to the parcels and development patterns that create the greatest infrastructure burden.',
+			},
+			{
+				id: 'fix-it-first',
+				title: 'Fix It First Infrastructure',
+				text: 'Maintain existing streets, pipes, sidewalks, drainage, parks, and public buildings before expanding outward.',
+			},
+
+		],
+	},
+	{
+		id: 'finance-administration',
+		title: 'Finance & Administration',
+		description:
+			'Policies for budgeting, reporting, measurement, and municipal decision-making.',
+		items: [
+			{
+				id: 'do-the-math',
+				title: 'Measure Net Income',
+				text: 'Measure and publish neighborhood-level revenues, costs, assets, liabilities, vacancy rates, crashes, infrastructure age, and other practical indicators.',
+			},
+			{
+				id: 'finance-decoder',
+				title: 'Add Finance Decoder to Reports',
+				text: 'Add plain-language balance sheet equations to the annual financial report so residents can see whether the city is getting stronger or weaker.',
+			},
+			{
+				id: 'money-ball',
+				title: 'Moneyball for City Government',
+				text: 'Use small, measurable, high-return public investments instead of defaulting to large projects whose benefits are difficult to prove.',
+			},
+			{
+				id: 'citizens-dividend',
+				title: 'Capture Economic Rent',
+				text: 'Meaure community-created wealth, then return its appreciation to the public through a citizens dividend.',
+			},
+
+		],
+	},
+	{
+		id: 'economic-development',
+		title: 'Economic Development',
+		description:
+			'Reward productive land use, local enterprise, and financially durable growth.',
 		items: [
 			{
 				id: 'single-tax',
@@ -140,29 +223,12 @@ const platformCategories = [
 			{
 				id: 'parking-reform',
 				title: 'End Parking Mandates',
-				text: 'Remove minimum parking requirements and let land be used for productive buildings, businesses, housing, and public life.',
+				text: 'Remove minimum parking requirements so valuable land can be used for buildings, businesses, housing, and public life instead of excess storage for cars.',
 			},
 			{
-				id: 'transit-orientation',
-				title: 'Transit-Oriented Development',
-				text: 'Encourage development around transit stations to reduce car dependency and promote sustainable transportation.',
-			},
-		],
-	},
-	{
-		id: 'public-realm',
-		title: 'Public Realm & Civic Assets',
-		description: 'Policies for using public space, public land, and small-scale experiments more effectively.',
-		items: [
-			{
-				id: 'tactical-urbanism',
-				title: 'Legalize Tactical Urbanism',
-				text: 'Create a simple permit process for temporary street improvements, parklets, planters, paint, curb extensions, and safety demonstrations.',
-			},
-			{
-				id: 'public-land',
-				title: 'Capture Economic Rent',
-				text: 'Inventory city-owned land, vacant parcels, and excess right-of-way, then return its appreciation to the public via land trust or by leasing on the private market.',
+				id: 'small-business-reform',
+				title: 'Small Business and Commercial Reform',
+				text: 'Make it easier to open small shops, neighborhood cafés, offices, home businesses, live-work spaces, upper-floor housing, and neighborhood services through zoning deregulation and administrative simplification.',
 			},
 		],
 	},
@@ -181,19 +247,18 @@ const platformCategories = [
 		<main>
 			<section class="hero">
 				<p class="eyebrow">Dear Fort Smith,</p>
-				<h1>Platform</h1>
+				<h1>Playbook</h1>
 
 				<p class="intro">
-					A working platform for a safer, more solvent, more productive Fort Smith.
+					My playbook for a safer, solvent, and productive city.
 				</p>
 
 				<p class="tag-note">
-					Each platform item also functions as a site tag for articles, memes, field notes,
-					public comments, and projects.
+					Each item also functions as a tag for articles and memes on the site.
 				</p>
 			</section>
 
-			<section class="category-grid" aria-label="Platform categories">
+			<section class="category-grid" aria-label="Playbook categories">
 				{platformCategories.map((category) => (
 					<details class="category" id={category.id}>
 						<summary>
@@ -204,10 +269,10 @@ const platformCategories = [
 								</div>
 
 								<div class="summary-footer">
-									<span class="count">{category.items.length} tags</span>
+									<span class="count">{category.items.length} items</span>
 									<span class="expand-pill">
-										<span class="show-text">Show tags</span>
-										<span class="hide-text">Hide tags</span>
+										<span class="show-text">Show items</span>
+										<span class="hide-text">Hide items</span>
 									</span>
 								</div>
 							</div>
@@ -216,25 +281,29 @@ const platformCategories = [
 						<div class="platform-reveal">
 							<ol class="platform-list">
 								{category.items.map((item) => (
-									<li id={item.id}>
-										<div class="item-header">
-											<a
-												class="anchor-link"
-												href={`#${item.id}`}
-												aria-label={`Link to ${item.title}`}
-											>
-												#
-											</a>
-											<strong>{item.title}</strong>
-										</div>
+<li id={`${category.id}-${item.id}`}>
+	<div class="item-header">
+		<a
+			class="anchor-link"
+			href={`#${category.id}-${item.id}`}
+			aria-label={`Link to ${item.title}`}
+		>
+			#
+		</a>
+		<strong>{item.title}</strong>
+	</div>
 
-										<p class="item-text">{item.text}</p>
+	<p class="item-text">{item.text}</p>
 
-										<div class="platform-tag">
-											<span>Tag:</span>
-											<code>{item.id}</code>
-										</div>
-									</li>
+	<a
+		class="platform-tag"
+		href={`/tags/${item.id}`}
+		aria-label={`View articles tagged ${item.id}`}
+	>
+		<span>Tag:</span>
+		<code>{item.id}</code>
+	</a>
+</li>
 								))}
 							</ol>
 						</div>
@@ -456,15 +525,21 @@ const platformCategories = [
 		line-height: 1;
 		text-align: center;
 		white-space: nowrap;
+		text-decoration: none;
 	}
 
-.platform-tag code {
-	all: unset;
-	color: rgb(var(--accent-light));
-	font-size: 0.68rem;
-	font-weight: 800;
-	line-height: 1;
+	.platform-tag:hover {
+	background: rgba(var(--accent), 0.32);
+	color: var(--text);
 }
+
+	.platform-tag code {
+		all: unset;
+		color: rgb(var(--accent-light));
+		font-size: 0.68rem;
+		font-weight: 800;
+		line-height: 1;
+	}
 
 	@keyframes revealTags {
 		from {
@@ -495,7 +570,4 @@ const platformCategories = [
 		.platform-tag {
 			justify-self: start;
 			white-space: normal;
-			line-height: 1.2;
-		}
-	}
-</style>
+			line-height: 

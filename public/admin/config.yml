@@ -33,34 +33,38 @@ collections:
         widget: "image"
         required: false
 
-      - label: "Tags"
-        name: "tags"
-        widget: "select"
-        multiple: true
-        required: false
-        options:
-          - { label: "Balanced Budget", value: "balanced-budget" }
-          - { label: "Do the Math", value: "do-the-math" }
-          - { label: "Finance Decoder", value: "finance-decoder" }
-          - { label: "Fix It First", value: "fix-it-first" }
-          - { label: "Utilities", value: "utilites" }
-          - { label: "Money Ball", value: "money-ball" }
-          - { label: "Eyes on the Street", value: "eyes-on-the-street" }
-          - { label: "Police Visibility", value: "police-visibility" }
-          - { label: "Single Stair", value: "single-stair" }
-          - { label: "Safe Streets", value: "safe-streets" }
-          - { label: "No New Roads", value: "no-new-roads" }
-          - { label: "VMT", value: "vmt" }
-          - { label: "Mobility for All", value: "car-dependency" }
-          - { label: "Hexagonal Network Topology", value: "street-hierarchy" }
-          - { label: "Incremental Development", value: "incremental-development" }
-          - { label: "Infill", value: "infill" }
-          - { label: "Small Business Reform", value: "small-business-reform" }
-          - { label: "Single Tax", value: "single-tax" }
-          - { label: "Parking Reform", value: "parking-reform" }
-          - { label: "Transit-Oriented Development", value: "transit-orientation" }
-          - { label: "Tactical Urbanism", value: "tactical-urbanism" }
-          - { label: "Capture Economic Rent", value: "public-land" }
+- label: "Tags"
+  name: "tags"
+  widget: "select"
+  multiple: true
+  required: false
+  options:
+    - { label: "Balanced Budget", value: "balanced-budget" }
+    - { label: "Car Dependency", value: "car-dependency" }
+    - { label: "Citizens Dividend", value: "citizens-dividend" }
+    - { label: "Do the Math", value: "do-the-math" }
+    - { label: "Eyes on the Street", value: "eyes-on-the-street" }
+    - { label: "Finance Decoder", value: "finance-decoder" }
+    - { label: "Fix It First", value: "fix-it-first" }
+    - { label: "Form-Based Code", value: "form-based-code" }
+    - { label: "Infill", value: "infill" }
+    - { label: "Incremental Development", value: "incremental-development" }
+    - { label: "Moneyball", value: "money-ball" }
+    - { label: "No New Roads", value: "no-new-roads" }
+    - { label: "Parking Reform", value: "parking-reform" }
+    - { label: "Police Visibility", value: "police-visibility" }
+    - { label: "Ridership-First Transit", value: "ridership-first-transit" }
+    - { label: "Safe Streets", value: "safe-streets" }
+    - { label: "Single Stair", value: "single-stair" }
+    - { label: "Single Tax", value: "single-tax" }
+    - { label: "Smaller Elevators", value: "smaller-elevators" }
+    - { label: "Smaller Fire Trucks", value: "smaller-trucks" }
+    - { label: "Small Business Reform", value: "small-business-reform" }
+    - { label: "Street Hierarchy", value: "street-hierarchy" }
+    - { label: "Tactical Urbanism", value: "tactical-urbanism" }
+    - { label: "Transit Orientation", value: "transit-orientation" }
+    - { label: "Utilities", value: "utilities" }
+    - { label: "Vehicle Miles Traveled", value: "vmt" }
 
       - label: "Body"
         name: "body"

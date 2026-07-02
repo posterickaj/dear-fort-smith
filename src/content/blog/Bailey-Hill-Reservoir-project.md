@@ -8,7 +8,7 @@ tags:
   - do-the-math
   - money-ball
   - street-hierarchy
-  - incremental development
+  - incremental-development
   - infill
   - small-business-reform
 ---
@@ -16,7 +16,7 @@ Dear Fort Smith,
 
 Residents are questioning public infrastructure funding for the Bailey Hill Reservoir Project, a housing development in the works for several years. The city is asked to contribute up to $1 million toward street and drainage improvements, as part of a total $1.75 million public infrastructure package for 34 residential lots on approximately 7 acres.
 
-Developments like this spring up from the private sector without question. They have the same weak long-term finances, but it is more obscured because private developers often build the infrastructure first, then dedicate it to the city, who inherits the resurfacing, drainage, policing, fire protection, and replacement obligations. But because The Bailey Hill Reservoir project happens to be a project from the Fort Smith Housing Authority, the magnifying glasses and intellectual dishonesty come out. The criticism follows the usual refrains: “I pay property taxes, why shouldn’t they?” “I don’t get funded an advantage over my competition, why should they?” 
+Developments like this spring up from the private sector without question. They have the same weak long-term finances, but it is more obscured because private developers often build the infrastructure first, then dedicate it to the city, which inherits the resurfacing, drainage, policing, fire protection, and replacement obligations. But because the Bailey Hill Reservoir project happens to be a project from the Fort Smith Housing Authority, the magnifying glasses and intellectual dishonesty come out. The criticism follows the usual refrains: “I pay property taxes, why shouldn’t they?” “I don’t get a publicly-funded advantage over my competition, why should they?” 
 
 These objections are incomplete because they fail to curiously explore answers to their own questions: what injustice, exactly, is being done? And how much of it is there? 
 
@@ -27,13 +27,14 @@ Streets are funded by a .625% sales tax. The residents of Bailey Hill Reservoir 
 Water and sewer are funded by water usage. The residents of Bailey Hill Reservoir are not exempt from water and sewer bills.
 
 So if the complaint is that Bailey Hill’s infrastructure deficit comes from special property-tax treatment, the argument does not hold. The street and drainage money comes from the city’s streets, bridges, and drainage sales tax fund. Bailey Hill residents will pay sales tax like everyone else. Water and sewer service will be paid through water and sewer bills like everyone else. 
-That does not mean Bailey Hill receives no subsidy. The point is finer: the infrastructure deficit is caused by the low-productivity infrastructure: math that affects public and private development all over Fort Smith.
+That does not mean Bailey Hill receives no subsidy. The point is finer: the infrastructure deficit is caused by the low-productivity infrastructure math that affects public and private development all over Fort Smith.
 
-I have long advocated for replacing most zoning requirements with one simple question: “does it pencil?” We are all beneficiaries of public infrastructure: the city will resurface the street in front of your house, repair the water leak, and even handle your poop for you, and they don’t care if you are a private citizen, a tax exempt non-profit, or a government entity.
+I have long advocated for replacing most zoning requirements with one simple question: “does it pencil?” We are all beneficiaries of public infrastructure: the city will resurface the street in front of your house, repair the water leak, and even handle your poop for you, and they don’t care if you are a private citizen, a tax-exempt nonprofit, or a government entity.
 
 For the city to continue providing these services indefinitely, they must take in more money than it costs them to perform these services. They must, and this may offend those of you who are left-leaning, turn a profit. Which is what “penciling” means: “does this development turn a profit for the city, or lose money?”
 The problem is not that Bailey Hill is affordable housing. The problem is that it is being evaluated with the same broken development pattern that we use for every development, public or private: build infrastructure first, then pray that its future revenues eventually cover that cost. Some developments pencil. Most don’t. That’s what causes a Consent Decree situation.
-The document that estimates whether a project will pencil is called a “pro forma,” and if the city wanted to write a pro forma for a project like this, they would calculate its long-term maintenance (even in the common scenario where a developer dedicates free infrastructure to the city), and (2) make sure that number is lower than the estimated future public revenues it generates. Neither of these two crucial steps, widely followed in the private sector, are part of our long-term growth plan.
+
+The document that estimates whether a project will pencil is called a “pro forma,” and if the city wanted to write a pro forma for a project like this, they would (1) calculate its long-term maintenance (even in the common scenario where a developer dedicates free infrastructure to the city), and (2) make sure that number is lower than the estimated future public revenues it generates. Neither of these two crucial steps are part of our long-term growth plan.
 
 Luckily, we have all the math we need to write a pro forma for the Bailey Hill Reservoir project for ourselves. Here’s the math:
 

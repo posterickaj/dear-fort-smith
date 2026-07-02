@@ -23,8 +23,8 @@ Take the young married couple: recent grads in a one-bedroom, third-floor walk-u
 \
 This family uses barely any pipes, and yet they pay the same water bill as a sprawling estate. 
 
-They contribute nothing to traffic congestion, and yet pay just as much streets tax as a family with four cars driving the length of the city twice a day. 
+They contribute nothing to traffic congestion, and yet pay just as much in streets tax as a family with four cars driving the length of the city twice a day. 
 
 They take no parking spaces, and yet they pay the same consent decree, drainage, and sewer taxes that are only necessary because of all our town's parking lots.\
 \
-It seems that these city services are free for the wealthiest people in our city, because they are subsidized by those who can least afford them..
+It seems that these city services are free for the wealthiest people in our city, because they are subsidized by those who can least afford them.

@@ -5,7 +5,7 @@ description: "A billing system that directly bills for length of pipe would be
 pubDate: 2026-06-02
 heroImage: /images/pipes-are-expensive.jpg
 tags:
-  - utilites
+  - utilities
   - do-the-math
 ---
 There isn't an article associated with this image.

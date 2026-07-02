@@ -31,7 +31,7 @@ Parking mandates make that worse.
 
 Ending parking mandates would not ban parking, but rather would stop the city from forcing every property owner to overbuy.
 
-There is an odd refrain that cost of free parking is baked in to the cost of goods and services that we all enjoy. That Wal-Mart's parking lot maintenance is paid for by Wal-Mart, and that a portion of our purchases goes to maintain the lot. That is true. But there is no such accounting for the length of pipe that the public must maintain to get to the other side of that lot. If pipes last 80-100 years, and we are experiencing an infrastructure crisis from 80 year old pipes that we cannot afford to maintain, that means 90,000 of us can't afford to maintain the set of pipes built in 1946, when Fort Smith was half its size. 
+There is an odd refrain that cost of free parking is baked into the cost of goods and services that we all enjoy. "Wal-Mart's parking lot maintenance is paid for by Wal-Mart, and a portion of our purchases goes to maintain the lot." That is true. But there is no such accounting for the length of pipe that the public must maintain to get to the other side of that lot. If pipes last 80-100 years, and we are experiencing an infrastructure crisis from 80-year-old pipes that we cannot afford to maintain, that means 90,000 of us can't afford to maintain the set of pipes built in 1946, when Fort Smith was half its size. 
 
 What do you expect our children to do 80 years from now, when the current pipes come due for replacement?
 

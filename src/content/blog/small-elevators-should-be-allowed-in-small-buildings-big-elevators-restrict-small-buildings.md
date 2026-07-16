@@ -1,6 +1,5 @@
 ---
-title: Small elevators should be allowed in small buildings. Big elevators
-  restrict small buildings.
+title: Big elevators restrict small buildings.
 description: >
   Elevators are essential for buildings over 3 stories, but the building code
   requires they be built to accommodate stretchers, meaning that elevators are

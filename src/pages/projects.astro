@@ -73,8 +73,8 @@ const projectCategories: ProjectCategory[] = [
 				title: 'Reflectors',
 				status: 'Active',
 				description:
-					'I distribute personal reflectors which can be clipped to clothing to improve visibility. Fort Smith Police cruisers carry them to give to vulnerable road users at night. I also give them out on Halloween.',
-				url: 'https://www.strongtowns.org/journal/2026-7-1-the-reflector-that-started-a-conversation',
+					'Personal reflectors carried in Fort Smith Police cruisers to give to vulnerable road users at night.',
+				url: '',
 				tags: ['safe-streets'],
 				image: '/images/reflector.jpg',
 				imageAlt: 'A pedestrian reflector attached to a backpack.',
@@ -216,24 +216,22 @@ const formatTag = (tag: string) =>
 											<div class="project-card-header">
 												<p class="status">{project.status}</p>
 
-												{!project.image && (
-													project.url ? (
-														<a
-															class="project-link"
-															href={project.url}
-															target={project.url.startsWith('http') ? '_blank' : undefined}
-															rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-														>
-															Open project →
-														</a>
-													) : (
-														<span class="project-link muted">No public link yet</span>
-													)
+												{project.url ? (
+													<a
+														class="project-link"
+														href={project.url}
+														target={project.url.startsWith('http') ? '_blank' : undefined}
+														rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+													>
+														Open project →
+													</a>
+												) : (
+													<span class="project-link muted">No public link yet</span>
 												)}
 											</div>
 
 											<h3>{project.title}</h3>
-											<p class="project-description">{project.description}</p>
+											<p>{project.description}</p>
 
 											{project.tags.length > 0 && (
 												<div class="tag-list">
@@ -247,30 +245,13 @@ const formatTag = (tag: string) =>
 										</div>
 
 										{project.image && (
-											<div class="project-side">
-												{project.url ? (
-													<a
-														class="project-link side-link"
-														href={project.url}
-														target={project.url.startsWith('http') ? '_blank' : undefined}
-														rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-													>
-														Open project →
-													</a>
-												) : (
-													<span class="project-link muted side-link">
-														No public link yet
-													</span>
-												)}
-
-												<div class="project-image-wrap">
-													<img
-														class="project-image"
-														src={project.image}
-														alt={project.imageAlt ?? ''}
-														loading="lazy"
-													/>
-												</div>
+											<div class="project-image-wrap">
+												<img
+													class="project-image"
+													src={project.image}
+													alt={project.imageAlt ?? ''}
+													loading="lazy"
+												/>
 											</div>
 										)}
 									</article>
@@ -303,21 +284,19 @@ const formatTag = (tag: string) =>
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: var(--text-muted);
+		color: rgb(var(--gray));
 	}
 
 	h1 {
 		margin: 0 0 1rem;
 		font-size: clamp(2.5rem, 6vw, 4rem);
 		line-height: 1;
-		color: var(--text);
 	}
 
 	.intro {
 		max-width: 720px;
 		font-size: 1.15rem;
 		line-height: 1.6;
-		color: var(--text-soft);
 	}
 
 	.project-grid {
@@ -327,11 +306,10 @@ const formatTag = (tag: string) =>
 	}
 
 	.category {
-		border: 1px solid var(--border);
+		border: 1px solid rgba(var(--black), 0.12);
 		border-radius: 14px;
-		background: var(--surface);
-		box-shadow: var(--box-shadow);
-		color: var(--text);
+		background: white;
+		box-shadow: 0 2px 10px rgba(var(--black), 0.05);
 		overflow: hidden;
 	}
 
@@ -359,13 +337,12 @@ const formatTag = (tag: string) =>
 		margin: 0;
 		font-size: 1.75rem;
 		line-height: 1.15;
-		color: var(--text);
 	}
 
 	.category summary p {
 		margin: 0.5rem 0 0;
 		line-height: 1.45;
-		color: var(--text-muted);
+		color: rgb(var(--gray));
 	}
 
 	.summary-footer {
@@ -378,7 +355,7 @@ const formatTag = (tag: string) =>
 
 	.count {
 		white-space: nowrap;
-		color: var(--text-muted);
+		color: rgb(var(--gray));
 		font-size: 0.95rem;
 	}
 
@@ -388,8 +365,8 @@ const formatTag = (tag: string) =>
 		justify-content: center;
 		padding: 0.35rem 0.7rem;
 		border-radius: 999px;
-		background: rgba(var(--accent), 0.22);
-		color: rgb(var(--accent-light));
+		background: rgba(var(--accent), 0.12);
+		color: var(--accent);
 		font-size: 0.85rem;
 		font-weight: 700;
 	}
@@ -407,8 +384,8 @@ const formatTag = (tag: string) =>
 	}
 
 	.project-reveal {
-		background: var(--surface-soft);
-		border-top: 1px solid var(--border);
+		background: rgba(var(--accent), 0.12);
+		border-top: 1px solid rgba(var(--black), 0.08);
 		padding: 1.25rem;
 	}
 
@@ -427,14 +404,13 @@ const formatTag = (tag: string) =>
 		gap: 1.25rem;
 		align-items: start;
 		padding: 1rem;
-		border: 1px solid var(--border);
-		border-radius: 12px;
-		background: var(--surface-tinted);
-		color: var(--text);
+		border: 1px solid rgba(var(--black), 0.1);
+		border-radius: 10px;
+		background: rgb(250, 243, 243);
 	}
 
 	.project-card.has-image {
-		grid-template-columns: minmax(0, 1fr) 190px;
+		grid-template-columns: minmax(0, 1fr) 180px;
 	}
 
 	.project-copy {
@@ -455,9 +431,9 @@ const formatTag = (tag: string) =>
 		margin: 0;
 		padding: 0.25rem 0.55rem;
 		border-radius: 999px;
-		background: rgba(var(--accent), 0.16);
-		color: rgb(var(--accent-light));
-		font-size: 0.75rem;
+		background: rgba(var(--black), 0.07);
+		color: rgb(var(--gray));
+		font-size: 0.8rem;
 		font-weight: 800;
 		text-transform: uppercase;
 		letter-spacing: 0.04em;
@@ -465,18 +441,17 @@ const formatTag = (tag: string) =>
 
 	.project-link {
 		white-space: nowrap;
-		color: rgb(var(--accent-light));
+		color: var(--accent);
 		font-weight: 800;
 		text-decoration: none;
 	}
 
 	.project-link:hover {
-		color: var(--text);
 		text-decoration: underline;
 	}
 
 	.project-link.muted {
-		color: var(--text-muted);
+		color: rgb(var(--gray));
 		font-weight: 700;
 	}
 
@@ -484,13 +459,14 @@ const formatTag = (tag: string) =>
 		margin: 0 0 0.5rem;
 		font-size: 1.2rem;
 		line-height: 1.2;
-		color: var(--text);
 	}
 
-	.project-description {
-		margin: 0;
-		color: var(--text-soft);
+	.project-card p {
 		line-height: 1.55;
+	}
+
+	.project-card h3 + p {
+		margin-top: 0;
 	}
 
 	.tag-list {
@@ -501,43 +477,27 @@ const formatTag = (tag: string) =>
 	}
 
 	.tag {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0.28rem 0.6rem;
-		border: 1px solid rgba(var(--accent-light), 0.18);
+		display: inline-block;
+		padding: 0.3rem 0.65rem;
 		border-radius: 999px;
-		background: rgba(var(--accent), 0.2);
-		color: rgb(var(--accent-light));
-		font-size: 0.76rem;
-		font-weight: 800;
-		line-height: 1;
+		background: rgba(var(--accent), 0.12);
+		color: var(--accent);
+		font-size: 0.82rem;
+		font-weight: 700;
 		text-decoration: none;
 	}
 
 	.tag:hover {
-		background: rgba(var(--accent), 0.3);
-		color: var(--text);
-	}
-
-	.project-side {
-		display: grid;
-		gap: 0.75rem;
-		justify-items: end;
-		align-content: start;
-	}
-
-	.side-link {
-		text-align: right;
+		background: rgba(var(--accent), 0.22);
 	}
 
 	.project-image-wrap {
-		width: 190px;
-		height: 190px;
+		width: 180px;
+		height: 180px;
 		overflow: hidden;
-		border: 1px solid var(--border);
+		border: 1px solid rgba(var(--black), 0.12);
 		border-radius: 12px;
-		background: var(--surface-raised);
+		background: white;
 	}
 
 	.project-image {
@@ -546,7 +506,7 @@ const formatTag = (tag: string) =>
 		height: 100%;
 		object-fit: cover;
 		object-position: 50% 38%;
-		transform: scale(3.6);
+		transform: scale(1.75);
 		transform-origin: 50% 38%;
 	}
 
@@ -567,10 +527,6 @@ const formatTag = (tag: string) =>
 			padding: 2rem 1rem;
 		}
 
-		.count {
-			display: none;
-		}
-
 		.project-card.has-image {
 			grid-template-columns: 1fr;
 		}
@@ -584,14 +540,6 @@ const formatTag = (tag: string) =>
 			white-space: normal;
 		}
 
-		.project-side {
-			justify-items: start;
-		}
-
-		.side-link {
-			text-align: left;
-		}
-
 		.project-image-wrap {
 			width: 100%;
 			height: 220px;
@@ -599,8 +547,12 @@ const formatTag = (tag: string) =>
 
 		.project-image {
 			object-position: 50% 38%;
-			transform: scale(2.5);
+			transform: scale(1.45);
 			transform-origin: 50% 38%;
+		}
+
+		.count {
+			display: none;
 		}
 	}
 </style>

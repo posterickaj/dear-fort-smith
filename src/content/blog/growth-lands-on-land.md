@@ -1,5 +1,5 @@
 ---
-title: Growth Lands on Land
+title: Economic Growth has a Landlord
 description: If public investment creates land value, that value should come
   back to the public.
 pubDate: 2026-08-09
